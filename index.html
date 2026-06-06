@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lim Yejun | Interactive Retro Portfolio</title>
+  <meta name="description" content="Explore the interactive web worlds and photographic memory lane of Lim Yejun - designed in nostalgic PS1 survival horror style.">
+  
+  <!-- Retro Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- The CRT Monitor Container -->
+  <div class="crt-monitor" id="monitor">
+    
+    <!-- CRT Overlay Filters -->
+    <div class="crt-overlay scanlines"></div>
+    <div class="crt-overlay vignette"></div>
+    <div class="crt-overlay screen-flicker"></div>
+    <div class="crt-overlay static-distortion" id="staticOverlay"></div>
+    <div class="crt-overlay glass-glare"></div>
+
+    <!-- The actual screen area containing all scenes -->
+    <div class="screen-content" id="screenContent">
+
+      <!-- Retro Playlist Bar (Winamp-style Floating Header) -->
+      <div class="retro-playlist-bar hidden" id="playlistBar">
+        <div class="playlist-track-info">
+          <span class="playlist-icon">📻</span>
+          <div class="playlist-ticker-wrap">
+            <div class="playlist-ticker" id="playlistTicker">RECOMMENDED PLAYLIST // Loading lofi music...</div>
+          </div>
+        </div>
+        <div class="playlist-controls">
+          <button class="playlist-btn" id="playlistPlayBtn" title="Play/Pause">⏸ Play</button>
+          <button class="playlist-btn" id="playlistNextBtn" title="Next Song">⏭ Next</button>
+          <button class="playlist-btn" id="playlistMuteBtn" title="Mute/Unmute">🔊 Mute</button>
+        </div>
+        <!-- Hidden YouTube Player Container -->
+        <div id="ytPlayerContainer" style="display: none;"></div>
+      </div>
+
+      <!-- Scene 0: Audio Setup / Press Start to Boot -->
+      <section class="scene active" id="sceneAudioSetup" aria-label="System Initializing">
+        <div class="boot-prompt-container">
+          <h1 class="boot-title">SYSTEM STATUS: READY</h1>
+          <p class="boot-subtitle">YEJUN LIM PORTFOLIO DRIVE V1.09</p>
+          <div class="warning-box">
+            <span class="warning-tag">WARNING</span>
+            <p class="warning-text">THIS SIMULATION USES SOUND SYNTHESIS FOR COMPLETE IMMERSION. PLEASE ENABLE AUDIO BEFORE PROCEEDING.</p>
+          </div>
+          <button class="retro-btn pulse" id="btnBootWithAudio">
+            [ RUN PORTFOLIO WITH AUDIO ]
+          </button>
+          <button class="retro-btn-sub" id="btnBootSilent">
+            [ Run Silent ]
+          </button>
+        </div>
+      </section>
+
+      <!-- Scene 1: Earth Loader Boot Screen -->
+      <section class="scene" id="sceneBoot" aria-label="System Boot Sequence">
+        <div class="ps1-boot-wrapper">
+          <div class="boot-loader-container" id="bootLoaderContainer">
+            <!-- Spinning Earth Wrapper -->
+            <div class="earth-wrapper">
+              <div class="retro-earth">
+                <svg class="continents" viewBox="0 0 100 50">
+                  <path d="M5,10 Q15,5 25,12 T45,10 T65,15 T85,8 L85,42 Q75,35 60,40 T35,38 T15,45 Z M105,10 Q115,5 125,12 T145,10 T165,15 T185,8 L185,42 Q175,35 160,40 T135,38 T115,45 Z" fill="#2a221f" />
+                </svg>
+              </div>
+              <div class="spinning-rainbow"></div>
+            </div>
+            
+            <h2 class="loader-text">Loading world...</h2>
+            
+            <div class="boot-loading-bar-wrapper">
+              <div class="boot-loading-bar" id="bootLoadingBar"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 2: Main Menu (Title Screen) -->
+      <section class="scene" id="sceneMainMenu" aria-label="Main Title Screen">
+        <!-- Scrolling Mist Background -->
+        <div class="fog-overlay"></div>
+        <div class="title-bg-visual"></div>
+        
+        <div class="main-menu-container">
+          <h1 class="game-title">YEJUN LIM<span class="sub-title-glow">ODYSSEY</span></h1>
+          <p class="game-version">MEMORY CARD BLOCK: 06-06-2026</p>
+          
+          <nav class="menu-options" id="mainMenuNav" aria-label="Main Menu Choices">
+            <button class="menu-item active" data-action="start">
+              <span class="cursor-pointer">&gt;</span> START EXPLORATION
+            </button>
+            <button class="menu-item" data-action="about">
+              <span class="cursor-pointer">&gt;</span> WHO IS LIM YEJUN?
+            </button>
+            <button class="menu-item" data-action="exit">
+              <span class="cursor-pointer">&gt;</span> SHUTDOWN
+            </button>
+          </nav>
+        </div>
+        
+        <div class="menu-instructions">
+          Use [▲/▼] keys or Hover/Click to Select
+        </div>
+      </section>
+
+      <!-- Scene 3: The Exploration Game Board -->
+      <section class="scene" id="sceneGame" aria-label="Exploration Board">
+        <div class="fog-overlay"></div>
+        
+        <!-- Game Layout: Media Display Left/Top, Controls Right/Top, Dialogue Box Bottom -->
+        <div class="game-grid">
+          
+          <!-- Column 1: Main Media Viewport -->
+          <div class="media-column">
+            <div class="viewport-frame">
+              <div class="viewport-header">
+                <span class="v-title" id="viewportTitle">MONITOR_01 // STANDBY</span>
+                <span class="v-status red-blink" id="viewportStatus">LIVE</span>
+              </div>
+              <div class="viewport-content" id="viewportContent">
+                <!-- Glitch Screen Visual -->
+                <div class="viewport-glitch" id="viewportGlitch"></div>
+                <!-- Connected Worlds Interactive SVG Map -->
+                <svg id="worldMapSvg" class="world-map-svg" viewBox="0 0 400 300" aria-label="Interactive Map of Lim Yejun's Worlds">
+                  <g id="mapLines" class="map-lines"></g>
+                  <g id="mapNodes" class="map-nodes"></g>
+                </svg>
+
+                <!-- Interactive Canvas or Loaded Image -->
+                <img id="viewportImage" src="" alt="Portfolio Showcase" class="portfolio-img hidden">
+                <iframe id="viewportIframe" class="portfolio-iframe hidden" frameborder="0" allowfullscreen></iframe>
+                <div id="viewportPlaceholder" class="viewport-placeholder hidden">
+                  <div class="signal-lost">NO SIGNAL</div>
+                  <div class="signal-sub">Awaiting category selection...</div>
+                </div>
+              </div>
+              <div class="viewport-footer">
+                <span id="viewportCaption">Select a path below to stream data.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: Dashboard Sidebar -->
+          <div class="sidebar-column">
+            <div class="sidebar-widget info-box">
+              <div class="widget-header">SYSTEM INFODOC</div>
+              <div class="widget-content">
+                <p><strong>SUBJECT:</strong> LIM YEJUN</p>
+                <p><strong>LOCATION:</strong> SEOUL, SOUTH KOREA</p>
+                <p><strong>DISCIPLINE:</strong> FILM MAKER, STORY-TELLER</p>
+                <p><strong>CURRENT STATUS:</strong> STUDENT(LAST 학기 ENROLLING) STUDYING FILM-MAKING, MULTI-MEDIA</p>
+              </div>
+            </div>
+
+            <div class="sidebar-widget status-box">
+              <div class="widget-header">DEVICE STATUS</div>
+              <div class="widget-content">
+                <div class="status-row">
+                  <span>AUDIO SYNTH:</span>
+                  <button id="btnToggleSound" class="control-toggle-btn active" title="Toggle audio synthesizer">ON</button>
+                </div>
+                <div class="status-row">
+                  <span>SCANLINES:</span>
+                  <button id="btnToggleScanlines" class="control-toggle-btn active" title="Toggle retro scanlines">ON</button>
+                </div>
+                <div class="status-row">
+                  <span>WORLD PORTAL:</span>
+                  <a id="btnExternalLink" href="#" target="_blank" class="sidebar-link disabled">[ LINK DISABLED ]</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="sidebar-widget status-box" id="backButtonWidget">
+              <div class="widget-header">SYSTEM CONTROL</div>
+              <div class="widget-content" style="padding: 10px; display: flex; justify-content: center; align-items: center;">
+                <button id="btnBackToMap" class="control-toggle-btn active" style="width: 100%; text-align: center; padding: 6px 0; font-size: 10px; font-weight: bold;">[ ◀ BACK ]</button>
+              </div>
+            </div>
+            
+            <div class="controls-legend">
+              <p><strong>KEYBOARD CONTROLS:</strong></p>
+              <p>[▲/▼] Navigate Choices</p>
+              <p>[ENTER] Select Option</p>
+              <p>[ESC/BACKSPACE] Go Back</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Dialogue Box Area (Fixed at bottom) -->
+        <div class="dialog-box-container">
+          <div class="dialog-speaker" id="dialogSpeaker">YEJUN_AI</div>
+          <div class="dialog-body">
+            <div class="dialog-avatar-container" id="dialogAvatarContainer">
+              <img src="assets/avatar.png" alt="Lim Yejun Avatar" class="dialog-avatar">
+            </div>
+            <div class="dialog-inner">
+              <div class="dialog-text" id="dialogText">Initializing system logs... Ready to deploy content. Select a folder to inspect.</div>
+              <div class="dialog-caret" id="dialogCaret">▼</div>
+            </div>
+          </div>
+          
+          <!-- Choices overlay on dialogue box -->
+          <div class="dialog-choices-panel" id="dialogChoicesPanel" aria-label="Branching Choices">
+            <!-- Dynamically populated choices -->
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Scene 4: Shutdown / Credits Screen -->
+      <section class="scene" id="sceneShutdown" aria-label="Shutdown Screen">
+        <div class="shutdown-wrapper">
+          <div class="static-noise-bg"></div>
+          <div class="shutdown-text">
+            <h2>SIGNAL TERMINATED</h2>
+            <p>Thank you for exploring Lim Yejun's Odyssey.</p>
+            <p class="pulse-slow font-tiny">To return, refresh the browser or click below.</p>
+            <button class="retro-btn" id="btnRestart">[ REBOOT SYSTEM ]</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

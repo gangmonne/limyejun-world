@@ -1,0 +1,1352 @@
+/* ==========================================================================
+   DESIGN SYSTEM & VARIABLES (PS1 Nostalgic Silent Hill Theme)
+   ========================================================================== */
+:root {
+  --font-system: 'Press Start 2P', monospace;
+  --font-dialog: 'VT323', monospace;
+  
+  /* Color Palette - Bright sunlit Zelda / parchment cream theme with high readability */
+  --bg-color: #f7f4eb;
+  --panel-bg: rgba(253, 251, 246, 0.95);
+  --border-rust: #5a463c;
+  --border-rust-light: #a68b58;
+  --border-alert: #b52a1d; /* Crimson red */
+  
+  --text-primary: #2a221f; /* Dark walnut wood for high contrast readability */
+  --text-muted: #5e6859; /* Forest sage grey */
+  --text-active: #c87a15; /* Vivid sunlit gold yellow */
+  --text-glow-green: #b47918; /* Sunlit gold/yellow glow */
+  --text-glow-red: #b52a1d; /* Crimson wood glow */
+  
+  --glow-shadow-green: 0 0 6px rgba(212, 146, 27, 0.35);
+  --glow-shadow-red: 0 0 6px rgba(181, 42, 29, 0.35);
+  --panel-shadow: 0 8px 30px rgba(90, 70, 60, 0.12);
+}
+
+/* Reset and Base Layout */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #020203;
+  color: var(--text-primary);
+  font-family: var(--font-system);
+  font-size: 12px;
+  line-height: 1.5;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   CRT MONITOR & SCREEN LAYERS
+   ========================================================================== */
+.crt-monitor {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  max-width: 1440px;
+  max-height: 900px;
+  background-color: var(--bg-color);
+  border: 16px solid #141416;
+  border-radius: 24px;
+  box-shadow: 
+    inset 0 0 80px rgba(0,0,0,1),
+    0 20px 50px rgba(0,0,0,0.9),
+    0 0 0 4px #262628;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Bezel inner shadow for 3D depth */
+.crt-monitor::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.95);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.screen-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* Dreamy Zelda cyan-to-gold sunlit dawn sky gradient */
+  background: linear-gradient(to bottom, #bce3eb 0%, #ebd7d5 50%, #f7ebd3 100%);
+}
+
+/* CRT Overlay Styles */
+.crt-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Scanlines: Subtle dark lines horizontally */
+.scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 4px, 6px 100%;
+}
+
+/* Vignette: Curved corners shadow */
+.vignette {
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.6) 90%,
+    rgba(0, 0, 0, 0.95) 100%
+  );
+}
+
+/* Screen Flicker: Tiny rapid brightness modulation */
+.screen-flicker {
+  background: rgba(255, 255, 255, 0.005);
+  animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.97; }
+  50% { opacity: 1.0; }
+  100% { opacity: 0.98; }
+}
+
+/* Glass Glare: Simulated reflection */
+.glass-glare {
+  background: radial-gradient(
+    circle at 50% 15%,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0) 60%
+  ), linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.02) 0%,
+    rgba(255, 255, 255, 0.02) 30%,
+    rgba(255, 255, 255, 0) 31%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+/* Static Glitch overlay (can be triggered) */
+.static-distortion {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.static-distortion.active {
+  opacity: 0.7;
+  animation: static-shift 0.2s steps(2) infinite;
+}
+
+@keyframes static-shift {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-5px, 5px); }
+  100% { transform: translate(5px, -5px); }
+}
+
+/* ==========================================================================
+   SCENES & SCENE TRANSITIONS
+   ========================================================================== */
+.scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+  z-index: 1;
+}
+
+.scene.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   SCENE 0: AUDIO BOOT PROMPT
+   ========================================================================== */
+.boot-prompt-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: #030405;
+  text-align: center;
+  padding: 40px;
+}
+
+.boot-title {
+  font-size: 24px;
+  color: var(--text-glow-green);
+  text-shadow: var(--glow-shadow-green);
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.boot-subtitle {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+}
+
+.warning-box {
+  border: 2px solid var(--border-alert);
+  background-color: rgba(155, 44, 44, 0.1);
+  padding: 20px 30px;
+  max-width: 600px;
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.warning-tag {
+  display: inline-block;
+  background-color: var(--border-alert);
+  color: #fff;
+  padding: 2px 8px;
+  font-size: 10px;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.warning-text {
+  font-size: 9px;
+  line-height: 1.8;
+  color: #c9ceca;
+  letter-spacing: 0.5px;
+}
+
+.retro-btn {
+  background-color: transparent;
+  border: 2px solid var(--text-primary);
+  color: var(--text-primary);
+  padding: 15px 30px;
+  font-family: var(--font-system);
+  font-size: 12px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s;
+  letter-spacing: 1px;
+}
+
+.retro-btn:hover, .retro-btn:focus {
+  background-color: var(--text-primary);
+  color: #000;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.retro-btn-sub {
+  background-color: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 10px;
+  font-family: var(--font-system);
+  font-size: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.2s;
+}
+
+.retro-btn-sub:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
+.pulse {
+  animation: pulse-effect 1.5s infinite;
+}
+
+@keyframes pulse-effect {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.03); opacity: 0.85; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ==========================================================================
+   SCENE 1: PS1 BOOT SEQUENCE
+   ========================================================================== */
+.ps1-boot-wrapper {
+  background-color: #faf8f2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+}
+
+/* Consolidated Earth Loader styles */
+.boot-loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #faf8f2;
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.earth-wrapper {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.retro-earth {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #5a463c; /* Walnut color outline */
+  overflow: hidden;
+  background-color: #3b82f6; /* Colorful blue ocean! */
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.continents {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 200px;
+  height: 60px;
+  animation: scroll-continents 6s linear infinite;
+  opacity: 0.95;
+}
+
+.continents path {
+  fill: #2ec4b6 !important; /* Colorful green/teal continents! */
+}
+
+@keyframes scroll-continents {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100px); }
+}
+
+/* Spinning rainbow ring surrounding the earth, not overlapping */
+.spinning-rainbow {
+  position: absolute;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 4px solid transparent;
+  border-top-color: #e54b4b;
+  border-right-color: #f7b05b;
+  border-bottom-color: #3b82f6;
+  border-left-color: #2ec4b6;
+  animation: spin-rainbow 1.2s linear infinite;
+  z-index: 5;
+  pointer-events: none;
+}
+
+@keyframes spin-rainbow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+.loader-text {
+  font-family: var(--font-system);
+  font-size: 11px;
+  color: #2a221f;
+  margin-bottom: 25px;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+}
+
+/* Loading Bar */
+.boot-loading-bar-wrapper {
+  width: 250px;
+  height: 12px;
+  border: 2px solid var(--border-rust);
+  background-color: #faf8f2;
+  overflow: hidden;
+  border-radius: 4px;
+  padding: 1px;
+}
+
+.boot-loading-bar {
+  width: 0%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    #3b82f6,
+    #3b82f6 8px,
+    #60a5fa 8px,
+    #60a5fa 10px
+  );
+  transition: width 0.1s linear;
+}
+
+/* ==========================================================================
+   SCENE 2: MAIN MENU
+   ========================================================================== */
+.fog-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  /* Sunlit morning fog haze overlay */
+  background: 
+    radial-gradient(circle, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 85%),
+    linear-gradient(rgba(255, 255, 255, 0.05) 0%, rgba(0,0,0,0) 50%, rgba(255, 255, 255, 0.05) 100%);
+  pointer-events: none;
+  z-index: 2;
+  animation: fog-drift 25s linear infinite;
+  background-size: 200% 200%;
+}
+
+@keyframes fog-drift {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 0%; }
+}
+
+.title-bg-visual {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  /* Bright sunlit sky background for main menu */
+  background: linear-gradient(to bottom, #aedbe6 0%, #ecd6d4 40%, #f9ebd0 80%, #f4e3c1 100%);
+  z-index: 1;
+}
+
+.main-menu-container {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding-bottom: 80px;
+}
+
+.game-title {
+  font-size: 32px;
+  letter-spacing: 4px;
+  text-shadow: 0 0 10px rgba(234, 63, 63, 0.3), 3px 3px 0px rgba(0,0,0,0.9);
+  color: #e5e7eb;
+  margin-bottom: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sub-title-glow {
+  font-size: 16px;
+  color: var(--text-glow-red);
+  letter-spacing: 12px;
+  text-shadow: var(--glow-shadow-red);
+  margin-left: 10px;
+}
+
+.game-version {
+  font-size: 9px;
+  color: var(--text-muted);
+  margin-bottom: 60px;
+  letter-spacing: 1px;
+}
+
+.menu-options {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 320px;
+}
+
+.menu-item {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-system);
+  font-size: 12px;
+  text-align: left;
+  padding: 10px 15px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-left: 3px solid transparent;
+}
+
+.menu-item .cursor-pointer {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.menu-item.active {
+  color: var(--text-active);
+  border-left: 3px solid var(--text-active);
+  padding-left: 20px;
+}
+
+.menu-item.active .cursor-pointer {
+  opacity: 1;
+}
+
+.menu-instructions {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 8px;
+  letter-spacing: 1px;
+  z-index: 3;
+}
+
+/* ==========================================================================
+   SCENE 3: PORTFOLIO INTERACTIVE BOARD (THE GAME)
+   ========================================================================== */
+.game-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 20px;
+  padding: 25px 25px 185px 25px; /* bottom padding is large to clear fixed dialog box */
+  height: 100%;
+  position: relative;
+  z-index: 3;
+}
+
+/* --- COLUMN 1: PORTFOLIO MONITOR VIEWPORT --- */
+.media-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.viewport-frame {
+  flex: 1;
+  background-color: #ede9dd;
+  border: 3px solid var(--border-rust);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: var(--panel-shadow);
+  position: relative;
+}
+
+.viewport-frame::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border: 1px solid var(--border-rust-light);
+  border-radius: 6px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.viewport-header {
+  height: 30px;
+  background-color: #dfdace;
+  border-bottom: 2px solid var(--border-rust);
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 9px;
+  color: var(--text-primary);
+  letter-spacing: 1px;
+}
+
+.red-blink {
+  color: var(--text-glow-red);
+  text-shadow: var(--glow-shadow-red);
+  font-weight: bold;
+  animation: blink 1.2s step-end infinite;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.red-blink::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: var(--text-glow-red);
+  border-radius: 50%;
+  box-shadow: var(--glow-shadow-red);
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.viewport-content {
+  flex: 1;
+  position: relative;
+  background-color: #faf8f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Pixel/Dither Overlay filter for loaded images */
+.viewport-content::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  /* Tiny grid dither pattern */
+  background-image: radial-gradient(rgba(0,0,0,0.18) 1px, transparent 1px);
+  background-size: 3px 3px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.portfolio-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Retro image styling filters */
+  filter: grayscale(12%) contrast(115%) brightness(82%);
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+
+.portfolio-img.hidden {
+  opacity: 0;
+}
+
+.portfolio-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: #000;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+
+.portfolio-iframe.hidden {
+  opacity: 0;
+  display: none !important;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.viewport-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  z-index: 2;
+  color: var(--border-rust-light);
+  text-align: center;
+}
+
+.signal-lost {
+  font-size: 16px;
+  letter-spacing: 3px;
+  animation: pulse-effect 2s infinite;
+}
+
+.signal-sub {
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+/* Glitch animation block */
+.viewport-glitch {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #000;
+  z-index: 3;
+  display: none;
+}
+
+.viewport-glitch.active {
+  display: block;
+  animation: glitch-anim 0.4s linear infinite;
+}
+
+@keyframes glitch-anim {
+  0% { background-color: #0a0e0c; transform: skewX(0deg) scaleY(1); }
+  20% { background-color: #2b1111; transform: skewX(10deg) scaleY(1.05); }
+  40% { background-color: #0e1c24; transform: skewX(-15deg) scaleY(0.95); }
+  60% { background-color: #140d1c; transform: skewX(0deg) scaleY(1); }
+  80% { background-color: #1f2115; transform: skewX(8deg) scaleY(1.02); }
+  100% { background-color: #000000; transform: skewX(0deg) scaleY(1); }
+}
+
+.viewport-footer {
+  height: 32px;
+  background-color: #dfdace;
+  border-top: 2px solid var(--border-rust);
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  font-size: 9px;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+}
+
+.retro-btn-sm {
+  margin-left: auto;
+  background-color: #e3ded2;
+  border: 2px solid #5a463c;
+  border-top-color: #fff;
+  border-left-color: #fff;
+  color: #2a221f;
+  font-family: var(--font-system);
+  font-size: 8px;
+  padding: 3px 8px;
+  cursor: pointer;
+  outline: none;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.retro-btn-sm:active {
+  border-color: #5a463c;
+  border-top-color: #8e7a68;
+  border-left-color: #8e7a68;
+  background-color: #d1cbc0;
+  padding: 4px 7px 2px 9px;
+}
+
+.retro-btn-sm:hover {
+  background-color: #faf8f2;
+  color: #c87a15;
+}
+
+.retro-btn-sm.hidden {
+  display: none !important;
+}
+
+/* --- COLUMN 2: RETRO DASHBOARD SIDEBAR --- */
+.sidebar-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidebar-widget {
+  background-color: var(--panel-bg);
+  border: 2px solid var(--border-rust);
+  border-radius: 6px;
+  box-shadow: var(--panel-shadow);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.sidebar-widget::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border: 1px solid var(--border-rust-light);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.widget-header {
+  background-color: #e3ded2;
+  border-bottom: 2px solid var(--border-rust);
+  padding: 6px 12px;
+  font-size: 9px;
+  color: var(--text-active);
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.widget-content {
+  padding: 12px;
+  font-size: 8px;
+  line-height: 2;
+  color: #403632;
+}
+
+.widget-content strong {
+  color: #5e6859;
+}
+
+/* Status toggles */
+.status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.status-row:last-child {
+  margin-bottom: 0;
+  margin-top: 5px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.control-toggle-btn {
+  background-color: #211e1d;
+  color: var(--text-muted);
+  border: 1px solid #4a423f;
+  padding: 3px 8px;
+  font-family: var(--font-system);
+  font-size: 8px;
+  cursor: pointer;
+  outline: none;
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+.control-toggle-btn.active {
+  background-color: #44371d;
+  color: var(--text-glow-green);
+  border-color: #826937;
+}
+
+.sidebar-link {
+  color: var(--text-glow-green);
+  text-shadow: var(--glow-shadow-green);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.sidebar-link.disabled {
+  color: var(--text-muted);
+  text-shadow: none;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.controls-legend {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 12px;
+  font-size: 7px;
+  line-height: 1.8;
+  color: var(--text-muted);
+  border-radius: 4px;
+}
+
+.controls-legend p strong {
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* ==========================================================================
+   JRPG BOX / DIALOG & CHOICE SYSTEM
+   ========================================================================== */
+.dialog-box-container {
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+  right: 25px;
+  height: 140px;
+  background-color: var(--panel-bg);
+  border: 4px double var(--border-rust-light);
+  border-radius: 8px;
+  box-shadow: 
+    0 0 0 3px var(--border-rust),
+    var(--panel-shadow);
+  padding: 15px 20px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dialog-speaker {
+  position: absolute;
+  top: -14px;
+  left: 20px;
+  background-color: #faf6eb;
+  border: 2px solid var(--border-rust-light);
+  padding: 4px 12px;
+  font-size: 8px;
+  color: var(--text-active);
+  font-weight: bold;
+  border-radius: 3px;
+  letter-spacing: 1px;
+}
+
+.dialog-body {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  height: 100%;
+  align-items: center;
+}
+
+.dialog-avatar-container {
+  width: 80px;
+  height: 80px;
+  border: 2px solid var(--border-rust);
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #faf6eb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.08);
+  flex-shrink: 0;
+}
+
+.dialog-avatar-container.hidden {
+  display: none;
+}
+
+.dialog-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+}
+
+.dialog-inner {
+  position: relative;
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.dialog-text {
+  font-family: var(--font-dialog);
+  font-size: 20px;
+  line-height: 1.35;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+  word-wrap: break-word;
+  padding-top: 5px;
+}
+
+/* Flashing caret showing typewriter finished */
+.dialog-caret {
+  position: absolute;
+  right: -5px;
+  bottom: 0px;
+  font-size: 14px;
+  color: var(--text-active);
+  animation: blink 0.8s step-end infinite;
+  display: none;
+}
+
+.dialog-caret.active {
+  display: block;
+}
+
+/* Choices Panel overlaid on top of dialogue box during selections */
+.dialog-choices-panel {
+  position: absolute;
+  top: 4px; left: 4px; right: 4px; bottom: 4px;
+  background-color: var(--panel-bg);
+  border-radius: 4px;
+  display: none; /* Active via JS */
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(6, 1fr);
+  gap: 4px 12px;
+  padding: 6px 12px;
+  overflow-y: auto;
+}
+
+.dialog-choices-panel.active {
+  display: grid;
+}
+
+.choice-btn {
+  background-color: transparent;
+  border: 1px solid rgba(255,255,255,0.05);
+  color: var(--text-muted);
+  font-family: var(--font-dialog);
+  font-size: 20px;
+  text-align: left;
+  padding: 6px 12px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.1s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 3px;
+}
+
+.choice-btn.active {
+  color: var(--text-active);
+  border-color: var(--border-rust-light);
+  background-color: rgba(110, 79, 72, 0.1);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+.choice-btn .pointer {
+  opacity: 0;
+}
+
+.choice-btn.active .pointer {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   SCENE 4: SHUTDOWN SCREEN
+   ========================================================================== */
+.shutdown-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.static-noise-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+  z-index: 1;
+}
+
+.shutdown-text {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.shutdown-text h2 {
+  font-size: 22px;
+  color: var(--text-glow-red);
+  text-shadow: var(--glow-shadow-red);
+  letter-spacing: 4px;
+}
+
+.shutdown-text p {
+  font-size: 10px;
+  color: var(--text-muted);
+  max-width: 400px;
+  line-height: 1.8;
+}
+
+.pulse-slow {
+  animation: pulse-effect 3s infinite;
+}
+
+.font-tiny {
+  font-size: 8px !important;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN & ADAPTABILITY
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .crt-monitor {
+    border: 8px solid #141416;
+    border-radius: 12px;
+  }
+  
+  .game-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1.2fr auto;
+    padding-bottom: 175px;
+    gap: 15px;
+  }
+  
+  .sidebar-column {
+    flex-direction: row;
+  }
+  
+  .sidebar-widget {
+    flex: 1;
+  }
+  
+  .controls-legend {
+    display: none;
+  }
+  
+  .dialog-box-container {
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    align-items: stretch;
+  }
+  
+  .crt-monitor {
+    border: none;
+    border-radius: 0;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .sidebar-column {
+    flex-direction: column;
+  }
+  
+  .game-title {
+    font-size: 24px;
+  }
+  
+  .sub-title-glow {
+    font-size: 12px;
+    letter-spacing: 8px;
+  }
+  
+  .menu-options {
+    width: 260px;
+  }
+  
+  .dialog-choices-panel {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    overflow-y: auto;
+  }
+  
+  .choice-btn {
+    font-size: 18px;
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY & PREFERS REDUCED MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-delay: 0s !important;
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .screen-flicker {
+    animation: none;
+  }
+  
+  .polygon-logo {
+    animation: none;
+  }
+  
+  .fog-overlay {
+    animation: none;
+  }
+  
+  .pulse {
+    animation: none;
+  }
+}
+
+/* ==========================================================================
+   INTERACTIVE WORLD SVG MAP STYLES
+   ========================================================================== */
+.world-map-svg {
+  width: 100%;
+  height: 100%;
+  background-image: url('assets/world_map.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: block;
+  z-index: 2;
+  transition: opacity 0.5s ease;
+}
+
+.world-map-svg.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Connection lines */
+.map-lines line {
+  stroke: #b5a89f;
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+  transition: all 0.3s ease;
+}
+
+.map-lines line.glow {
+  stroke: var(--text-active);
+  stroke-width: 2.5;
+  stroke-dasharray: none;
+  filter: drop-shadow(0 0 4px var(--text-active));
+}
+
+/* Map Nodes (Circles) */
+.map-nodes circle {
+  fill: #f0ebd8;
+  stroke: #8e7a68;
+  stroke-width: 2;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Pulsing highlight rings for active nodes */
+.map-nodes circle.active {
+  fill: var(--text-active);
+  stroke: #ffffff;
+  stroke-width: 3;
+  filter: drop-shadow(0 0 6px var(--text-active));
+}
+
+.map-nodes circle:hover {
+  stroke: var(--text-active);
+  filter: drop-shadow(0 0 4px var(--text-active));
+}
+
+/* Node label styling */
+.map-node-label {
+  font-family: var(--font-dialog);
+  font-size: 17px;
+  fill: var(--text-muted);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.map-node-label.active {
+  fill: var(--text-active);
+  font-weight: bold;
+  text-shadow: 0 0 4px rgba(229, 190, 73, 0.5);
+}
+
+/* ==========================================================================
+   FLOATING WINAMP-STYLE YOUTUBE PLAYLIST BAR
+   ========================================================================== */
+.retro-playlist-bar {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 440px;
+  height: 38px;
+  background-color: #dfdace;
+  border: 2px solid #5a463c;
+  border-top-color: #ebd7d5;
+  border-left-color: #ebd7d5;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(90, 70, 60, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  z-index: 100;
+  font-family: var(--font-system);
+  font-size: 8px;
+  color: #2a221f;
+  transition: opacity 0.5s ease;
+}
+
+.retro-playlist-bar.hidden {
+  opacity: 0 !important;
+  pointer-events: none;
+  display: none !important;
+}
+
+.playlist-track-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #faf8f2;
+  border: 1px solid #5a463c;
+  border-radius: 3px;
+  padding: 3px 6px;
+  overflow: hidden;
+  height: 24px;
+  max-width: 250px;
+}
+
+.playlist-icon {
+  font-size: 11px;
+}
+
+.playlist-ticker-wrap {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+}
+
+.playlist-ticker {
+  display: inline-block;
+  padding-left: 100%;
+  animation: playlist-marquee 12s linear infinite;
+  font-family: var(--font-dialog);
+  font-size: 16px;
+  color: #c87a15;
+  font-weight: bold;
+}
+
+@keyframes playlist-marquee {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-100%, 0, 0); }
+}
+
+.playlist-controls {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.playlist-btn {
+  background-color: #e3ded2;
+  border: 2px solid #5a463c;
+  border-top-color: #fff;
+  border-left-color: #fff;
+  color: #2a221f;
+  font-family: var(--font-system);
+  font-size: 8px;
+  padding: 3px 6px;
+  cursor: pointer;
+  outline: none;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.playlist-btn:active {
+  border-color: #5a463c;
+  border-top-color: #8e7a68;
+  border-left-color: #8e7a68;
+  background-color: #d1cbc0;
+  padding: 4px 5px 2px 7px;
+}
+
+.playlist-btn:hover {
+  background-color: #faf8f2;
+  color: #c87a15;
+}
