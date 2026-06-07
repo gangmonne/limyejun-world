@@ -227,10 +227,11 @@ const WORLDS = [
     id: "korea_smart",
     name: "I AM NOT SMART ANYMORE",
     type: "Seoul, Korea // Drama",
-    desc: "A character-driven story questioning intellect and identity in the fast-paced heart of Seoul.",
-    logline: "A character-driven story questioning intellect and identity in the fast-paced heart of Seoul.",
+    desc: "In a near-future where smart glasses are smarter than people, Mingu feels the urge to kill his boss. His smart glasses, G, notices this three days before he acts. The story of Mingu, who dreams of the perfect crime — and G, who should stop him.",
+    logline: "In a near-future where smart glasses are smarter than people, Mingu feels the urge to kill his boss. His smart glasses, G, notices this three days before he acts. The story of Mingu, who dreams of the perfect crime — and G, who should stop him.",
     format: "FMV Game",
-    runningTime: "approx. 40 min - 1hr",
+    genre: "Thriller, Black Comedy",
+    runningTime: "approx. 30 - 40 min",
     currentStatus: "In development",
     image: "assets/korea_smart.jpg",
     filter: "saturate(1.2) contrast(1.1) brightness(0.95)",
@@ -243,11 +244,12 @@ const WORLDS = [
     id: "korea_pohang",
     name: "Tourists",
     type: "Pohang, Korea // Scenic Narrative",
-    desc: "An exploration of transient visitors and memories left behind along the coastal lines of Pohang.",
-    logline: "An exploration of transient visitors and memories left behind along the coastal lines of Pohang.",
-    format: "Scenic Narrative // Experimental Video",
-    runningTime: "approx. 10 min",
-    currentStatus: "Completed",
+    desc: "In a remote mountain town in Gangwon, a 57-year-old driving instructor quietly takes in two drifters—a retired Irish tour driver and a Korean-American barely out of his teens. Asking nothing of each other, the three men share meals, roads, and mountain trails, passing on the unspoken art of how to endure this life.",
+    logline: "In a remote mountain town in Gangwon, a 57-year-old driving instructor quietly takes in two drifters—a retired Irish tour driver and a Korean-American barely out of his teens. Asking nothing of each other, the three men share meals, roads, and mountain trails, passing on the unspoken art of how to endure this life.",
+    format: "Feature Film Screenplay",
+    genre: "Drama",
+    runningTime: "approx. 90-100min",
+    currentStatus: "Script Development",
     image: "assets/korea_pohang.jpg",
     filter: "none",
     link: "https://github.com/LimYejun",
@@ -259,11 +261,12 @@ const WORLDS = [
     id: "korea_ho",
     name: "HO",
     type: "Jeollanam-do, Korea // Regional Folklore",
-    desc: "A rich narrative journey through the misty agricultural planes and traditions of Jeollanam-do.",
-    logline: "A rich narrative journey through the misty agricultural planes and traditions of Jeollanam-do.",
-    format: "Regional Folklore // Documentary Short",
-    runningTime: "approx. 20 min",
-    currentStatus: "Completed",
+    desc: "The son of a royal tiger-hunter, raised believing a tiger killed his father, fights his way into the Joseon court—only to learn his father's death was no beast but a conspiracy, and to come face to face with the man behind it.",
+    logline: "The son of a royal tiger-hunter, raised believing a tiger killed his father, fights his way into the Joseon court—only to learn his father's death was no beast but a conspiracy, and to come face to face with the man behind it.",
+    format: "AI Film (2 types - Feature, Short)",
+    genre: "Historic, Drama",
+    runningTime: "Short - approx. 20 min / Feature - 120 min",
+    currentStatus: "In production",
     image: "assets/korea_ho.jpg",
     filter: "sepia(0.2) saturate(1.4) contrast(1.05)",
     link: "https://github.com/LimYejun",
@@ -275,10 +278,11 @@ const WORLDS = [
     id: "korea_gyeongbuk",
     name: "Chiggy-ggun",
     type: "Gyeongsangbuk-do, Korea // Historical Folk",
-    desc: "Chiggy-ggun은 FMV game 형식으로 developing하는 중이다.",
-    logline: "Chiggy-ggun은 FMV game 형식으로 developing하는 중이다.",
-    format: "Historical Folk // Interactive Web Game",
-    runningTime: "N/A",
+    desc: "A story of a civilian porter during the Korean War who carries a dying enemy soldier down a mountain on his wooden A-frame carrier. They are both twenty-two. What begins as a desperate rescue becomes a brief, honest human exchange that dissolves the line between enemy and ally.",
+    logline: "A story of a civilian porter during the Korean War who carries a dying enemy soldier down a mountain on his wooden A-frame carrier. They are both twenty-two. What begins as a desperate rescue becomes a brief, honest human exchange that dissolves the line between enemy and ally.",
+    format: "Interactive Web Game, AI Short Film (Completed)",
+    genre: "Historic, Drama",
+    runningTime: "approx. 1 hr",
     currentStatus: "Developing",
     image: "assets/korea_gyeongbuk.png",
     filter: "none",
@@ -291,11 +295,12 @@ const WORLDS = [
     id: "korea_loess",
     name: "Taste Of Loess",
     type: "Mendoza-Incheon Connected // Live-action Short Film [IN PROGRESS]",
-    desc: "A live-action short film currently in progress, bridging the loess soils of Incheon, Korea with Mendoza, Argentina.",
-    logline: "A live-action short film bridging the loess soils of Incheon, Korea with Mendoza, Argentina.",
-    format: "Live-action Short Film",
+    desc: "Diagnosed with 3-stage cancer, a Latin American man who has never belonged anywhere washes up in a Korean loess-healing cult—and finds, in the mud, an unexpected peace with his own non-belonging.",
+    logline: "Diagnosed with 3-stage cancer, a Latin American man who has never belonged anywhere washes up in a Korean loess-healing cult—and finds, in the mud, an unexpected peace with his own non-belonging.",
+    format: "Hybrid Live-action Short Film",
+    genre: "Cult, Drama, Black Comedy",
     runningTime: "approx. 30 min",
-    currentStatus: "In Progress",
+    currentStatus: "In Pre-Production",
     image: "assets/korea_loess.jpg",
     filter: "none",
     link: "https://github.com/LimYejun",
@@ -308,12 +313,13 @@ const WORLDS = [
   },
   {
     id: "usa_manhattan",
-    name: "Bigball / Economic",
+    name: "Bigball",
     type: "Manhattan, New York // Meta AI Cinema",
-    desc: "A cutting-edge meta AI cinema piece analyzing economic power dynamics in Manhattan, New York.",
-    logline: "A cutting-edge meta AI cinema piece analyzing economic power dynamics in Manhattan, New York.",
-    format: "Meta AI Cinema // Short Video",
-    runningTime: "approx. 5 min",
+    desc: "An AI system that has been editing a Wall Street trader's life like a macho movie collapses after a neighbor dies alone — and for the first time, the pathetic nights that should have been cut start playing.",
+    logline: "An AI system that has been editing a Wall Street trader's life like a macho movie collapses after a neighbor dies alone — and for the first time, the pathetic nights that should have been cut start playing.",
+    format: "AI Film",
+    genre: "Meta Cinema, Drama",
+    runningTime: "32 min",
     currentStatus: "Completed",
     image: "assets/world_crt.png",
     filter: "contrast(1.3) brightness(0.85) grayscale(20%)",
@@ -327,11 +333,12 @@ const WORLDS = [
     id: "china_jade",
     name: "I Have No Arms, but I Want to Hold You",
     type: "China // Solar-punk Drama",
-    desc: "A touching speculative fiction narrative set in a solar-punk China, exploring touch, technology, and isolation.",
-    logline: "A touching speculative fiction narrative set in a solar-punk China, exploring touch, technology, and isolation.",
-    format: "Solar-punk Drama // Digital Narrative",
-    runningTime: "N/A",
-    currentStatus: "Completed",
+    desc: "In a future where immortality has become a commodity, a terminally ill Chinese boy befriends an ancient cosmic being that can cross the universe but cannot save his life. As the world races to escape death, the being chooses to do the only thing it can: stay by the boy's side.",
+    logline: "In a future where immortality has become a commodity, a terminally ill Chinese boy befriends an ancient cosmic being that can cross the universe but cannot save his life. As the world races to escape death, the being chooses to do the only thing it can: stay by the boy's side.",
+    format: "Feature Film Screenplay",
+    genre: "Solar-punk Drama, SF",
+    runningTime: "approx. 110 min",
+    currentStatus: "In Script Development",
     image: "assets/china_jade.jpg",
     filter: "none",
     link: "https://github.com/LimYejun",
@@ -345,9 +352,10 @@ const WORLDS = [
     type: "Syria-Canada Connected // 3-channel Multi Video",
     desc: "An immersive 3-channel multi-video documentary mapping entrepreneurial spirits spanning Damascus, Syria and Montreal, Canada.",
     logline: "An immersive 3-channel multi-video documentary mapping entrepreneurial spirits spanning Damascus, Syria and Montreal, Canada.",
-    format: "3-channel Video Installation // Documentary",
-    runningTime: "N/A",
-    currentStatus: "Completed",
+    format: "3-channel Video Installation",
+    genre: "Drama",
+    runningTime: "approx. 10 min",
+    currentStatus: "In Progress",
     image: "assets/syria_canada.jpg",
     filter: "none",
     link: "https://github.com/LimYejun",
@@ -362,11 +370,12 @@ const WORLDS = [
     id: "venice_joseon",
     name: "The Luminous World",
     type: "Venice-Joseon Connected // Historic Narrative",
-    desc: "A connected historic narrative bridging Venice, Italy and the Joseon Dynasty of Korea, exploring early global ties.",
-    logline: "A connected historic narrative bridging Venice, Italy and the Joseon Dynasty of Korea, exploring early global ties.",
-    format: "Historic Narrative // Experimental Video",
-    runningTime: "N/A",
-    currentStatus: "Completed",
+    desc: "Sold across the sea as a captive of the Imjin War, a young Joseon girl named Choyeon learns to survive in a strange Western land where not one face is familiar — and in doing so, learns to harden herself in the luminous, but yet chaotic world.",
+    logline: "Sold across the sea as a captive of the Imjin War, a young Joseon girl named Choyeon learns to survive in a strange Western land where not one face is familiar — and in doing so, learns to harden herself in the luminous, but yet chaotic world.",
+    format: "AI Drama Series (20min * 8)",
+    genre: "Historic Drama",
+    runningTime: "Series (20min *8)",
+    currentStatus: "In Script development",
     image: "assets/venice_joseon.jpg",
     filter: "none",
     link: "https://github.com/LimYejun",
@@ -381,13 +390,14 @@ const WORLDS = [
     id: "space_nebula",
     name: "Homestudy",
     type: "Outer Space // Atmospheric Diary",
-    desc: "A sci-fi interactive diary of a research scientist operating a solar observatory near a glowing purple nebula.",
-    logline: "A sci-fi interactive diary of a research scientist operating a solar observatory near a glowing purple nebula.",
-    format: "Atmospheric Diary // Interactive Website",
-    runningTime: "N/A",
-    currentStatus: "Completed",
-    image: "assets/world_surreal.png",
-    filter: "hue-rotate(240deg) saturate(1.8) contrast(1.3)",
+    desc: "After a solar flare destroys Earth, a man who uploaded his consciousness to a satellite drifts for 847 years, recreating his lost son—clinging to connection in a universe that wants everything to scatter. And… he finally reaches out to alien planet, meeting another scientist.",
+    logline: "After a solar flare destroys Earth, a man who uploaded his consciousness to a satellite drifts for 847 years, recreating his lost son—clinging to connection in a universe that wants everything to scatter. And… he finally reaches out to alien planet, meeting another scientist.",
+    format: "AI Film",
+    genre: "SF, Drama",
+    runningTime: "30min",
+    currentStatus: "In Script Development",
+    image: "assets/homestudy.jpg",
+    filter: "none",
     link: "https://github.com/LimYejun",
     linkText: "[ DOCK WITH OUTPOST ]",
     cx: 30, cy: 30,
@@ -395,13 +405,15 @@ const WORLDS = [
   },
   {
     id: "space_broadcast",
-    name: "The resonance of Sskurl Family",
+    name: "The resonance of Sskurl Family, Sskurl-8.",
     type: "Outer Space // Cosmic Signal Decipher",
-    desc: "An audio-visual game deciphering strange retro signals broadcast from an abandoned alien probe in the deep void.",
-    logline: "An audio-visual game deciphering strange retro signals broadcast from an abandoned alien probe in the deep void.",
-    format: "Cosmic Signal Decipher // Audio-Visual Game",
-    runningTime: "N/A",
-    currentStatus: "Completed",
+    desc: "A black-comedy cosmic horror in which Sskurl-Eight, an 18-year-old girl runaway fed up with her family's bizarre hip-hop incantation cult, falls into the cavern of a sleeping deep-sea god and—bantering all the while with the parasitic tentacle-hat stuck to her head—digs up her family's buried history and tries to claw her way back out.",
+    logline: "A black-comedy cosmic horror in which Sskurl-Eight, an 18-year-old girl runaway fed up with her family's bizarre hip-hop incantation cult, falls into the cavern of a sleeping deep-sea god and—bantering all the while with the parasitic tentacle-hat stuck to her head—digs up her family's buried history and tries to claw her way back out.",
+    format: "Audio-Visual Game",
+    genre: "Comedy",
+    runningTime: "approx. 40-50 min",
+    currentStatus: "In Progress",
+    usedTool: "RPG Maker MV or Unity",
     image: "assets/space_broadcast.jpg",
     filter: "none",
     link: "https://github.com/LimYejun",
@@ -418,8 +430,8 @@ const WORLDS = [
     format: "Media Art // Interactive Installation",
     image: "assets/media_plant_diary.jpg",
     filter: "saturate(1.2) contrast(1.1) brightness(0.9)",
-    link: "https://app.notion.com/p/Plant-talk-Art-tech-for-L-I-F-E-3704445ef4af80cb8700e13e8e898b69",
-    linkText: "[ EXPLORE ON NOTION ]",
+    link: "https://app.notion.com/p/Plant-Diary-3704445ef4af80a68813d731f3b7a68f",
+    linkText: "[ VIEW PROJECT DESCRIPTION ]",
     iframe: "https://www.youtube.com/embed/MTCXuWFPz40?autoplay=1",
     cx: 315, cy: 155,
     connections: []
@@ -434,7 +446,7 @@ const WORLDS = [
     image: "assets/media_garden_memories.png",
     filter: "none",
     link: "https://app.notion.com/p/Garden-of-Memories-TouchDesigner-3m-x3m-LED-2025-CoSHOW-Bex-3704445ef4af8018bba9d86a652fd6cb",
-    linkText: "[ EXPLORE ON NOTION ]",
+    linkText: "[ VIEW PROJECT DESCRIPTION ]",
     iframe: "https://www.youtube.com/embed/hzD5_q7hxys?autoplay=1",
     cx: 348, cy: 148,
     connections: []
@@ -455,6 +467,7 @@ function updateInfoDoc(world) {
         <p><strong>FORMAT:</strong> Short Film</p>
         <p><strong>RUNNING TIME:</strong> 36min</p>
         <p><strong>GENRE:</strong> Occult, Drama</p>
+        <p><strong>LOGLINE:</strong> A homesick Chinese ghost, misrouted on his journey back to his homeland, lands at the home of a lonely Korean girl, O-in. —and the two find unexpected comfort in each other.</p>
       `;
     } else if (world.id === "smart_film") {
       infoContent.innerHTML = `
@@ -486,8 +499,10 @@ function updateInfoDoc(world) {
       infoContent.innerHTML = `
         <p><strong>TITLE:</strong> ${world.name}</p>
         <p><strong>FORMAT:</strong> ${world.format || "N/A"}</p>
+        ${world.genre ? `<p><strong>GENRE:</strong> ${world.genre}</p>` : ""}
         <p><strong>RUNNING TIME:</strong> ${world.runningTime || "N/A"}</p>
         <p><strong>CURRENT STATUS:</strong> ${world.currentStatus || "N/A"}</p>
+        ${world.usedTool ? `<p><strong>USED TOOL:</strong> ${world.usedTool}</p>` : ""}
       `;
     }
   } else {
@@ -527,7 +542,8 @@ const FILMOGRAPHY_NODE = {
 
 const WARM_WARMY_HOME_NODE = {
   speaker: "YEJUN",
-  text: "warm, Warmy, HOME. (2024, 36 min) // Striving to find the emotional origins of our minds and cells, this short film explores occult elements combined with dramatic storytelling.",
+  text: "warm, Warmy, HOME. (2024, 36 min) // A homesick Chinese ghost, misrouted on his journey back to his homeland, lands at the home of a lonely Korean girl, O-in. —and the two find unexpected comfort in each other.",
+  image: "assets/warm_warmy_home.jpg",
   choices: [
     { text: "[Return to Filmography Menu]", action: "filmography" },
     { text: "[Return to Main Directory]", action: "map" }
@@ -981,6 +997,10 @@ function buildSVGMap() {
 }
 
 function highlightMapNode(activeIndex) {
+  const legend = document.getElementById("controlsLegend");
+  if (legend) {
+    legend.style.display = "none";
+  }
   updateInfoDoc(null);
   const isSystemChoice = activeIndex >= MAP_WORLDS.length;
   
@@ -1069,6 +1089,18 @@ function enterWorldDetail(world) {
       legend.style.background = "none";
       legend.style.border = "none";
       legend.style.padding = "0";
+    } else if (world.id === "media_garden_memories" || world.id === "media_plant_diary") {
+      legend.innerHTML = `
+        <div style="display: flex; flex-direction: column; gap: 8px; width: 100%;">
+          <a href="${world.link}" target="_blank" class="control-toggle-btn active" style="display: block; text-align: center; text-decoration: none; padding: 10px 0; font-size: 8px; font-weight: bold; width: 100%; border: 2px solid var(--border-rust); background-color: var(--text-active); color: #000; box-shadow: var(--glow-shadow-green);">
+            [ VIEW PROJECT DESCRIPTION ]
+          </a>
+        </div>
+      `;
+      legend.style.display = "block";
+      legend.style.background = "none";
+      legend.style.border = "none";
+      legend.style.padding = "0";
     } else {
       legend.style.display = "none";
     }
@@ -1091,6 +1123,8 @@ function enterWorldDetail(world) {
     projectSpecContent.innerHTML = `
       <p><strong>LOGLINE:</strong> ${world.logline || world.desc}</p>
       <p style="margin-top: 10px; padding-top: 8px; border-top: 1px dashed rgba(90, 70, 60, 0.15);"><strong>FORMAT:</strong> ${world.format || "N/A"}</p>
+      ${world.genre ? `<p><strong>GENRE:</strong> ${world.genre}</p>` : ""}
+      ${world.usedTool ? `<p><strong>USED TOOL:</strong> ${world.usedTool}</p>` : ""}
     `;
     projectSpec.classList.remove("hidden");
   }
@@ -1116,8 +1150,14 @@ function enterWorldDetail(world) {
       if (viewportImg) {
         viewportImg.src = world.image;
         viewportImg.style.filter = world.filter;
-        viewportImg.style.objectFit = "cover";
+        const isMediaArt = world.id && world.id.startsWith("media_");
+        viewportImg.style.objectFit = isMediaArt ? "contain" : "cover";
         viewportImg.classList.remove("hidden");
+        
+        const vpContent = document.getElementById("viewportContent");
+        if (vpContent) {
+          vpContent.style.backgroundColor = isMediaArt ? "#000" : "";
+        }
       }
     }
     
@@ -1184,6 +1224,8 @@ function exitWorldDetail() {
         viewportImg.style.objectFit = "cover";
         viewportImg.classList.remove("hidden");
       }
+      const vpContent = document.getElementById("viewportContent");
+      if (vpContent) vpContent.style.backgroundColor = "";
       highlightMediaArtChoice(currentChoiceIndex);
     } else if (["dossier", "skills", "philosophy", "filmography", "warm_warmy_home", "smart_film"].includes(currentDossierState)) {
       document.getElementById("worldMapSvg").classList.add("hidden");
@@ -1335,9 +1377,9 @@ function goToDossierNode(state, preserveIndex = false) {
   
   const viewportImg = document.getElementById("viewportImage");
   if (viewportImg) {
-    viewportImg.src = "assets/seoul_look_up.png";
-    viewportImg.style.filter = "none";
-    viewportImg.style.objectFit = "contain";
+    viewportImg.src = node.image || "assets/seoul_look_up.png";
+    viewportImg.style.filter = node.filter || "none";
+    viewportImg.style.objectFit = node.image ? "cover" : "contain";
     viewportImg.classList.remove("hidden");
   }
   
@@ -1414,6 +1456,8 @@ function executeDossierChoiceAction(action) {
           viewportImg.style.objectFit = "cover";
           viewportImg.classList.remove("hidden");
         }
+        const vpContent = document.getElementById("viewportContent");
+        if (vpContent) vpContent.style.backgroundColor = "";
         highlightMediaArtChoice(0);
       } else {
         document.getElementById("worldMapSvg").classList.remove("hidden");
@@ -1712,6 +1756,8 @@ function switchToMediaArt() {
       viewportImg.style.objectFit = "cover";
       viewportImg.classList.remove("hidden");
     }
+    const vpContent = document.getElementById("viewportContent");
+    if (vpContent) vpContent.style.backgroundColor = "";
     const iframeEl = document.getElementById("viewportIframe");
     if (iframeEl) {
       iframeEl.src = "";
@@ -1851,8 +1897,30 @@ function highlightMediaArtChoice(activeIndex) {
     if (viewportImg) {
       viewportImg.src = activeWorld.image;
       viewportImg.style.filter = activeWorld.filter;
-      viewportImg.style.objectFit = "cover";
+      const isMediaArt = activeWorld.id && activeWorld.id.startsWith("media_");
+      viewportImg.style.objectFit = isMediaArt ? "contain" : "cover";
       viewportImg.classList.remove("hidden");
+      
+      const vpContent = document.getElementById("viewportContent");
+      if (vpContent) {
+        vpContent.style.backgroundColor = isMediaArt ? "#000" : "";
+      }
+    }
+    
+    // Render controlsLegend button immediately for media art previews
+    const legend = document.getElementById("controlsLegend");
+    if (legend) {
+      legend.innerHTML = `
+        <div style="display: flex; flex-direction: column; gap: 8px; width: 100%;">
+          <a href="${activeWorld.link}" target="_blank" class="control-toggle-btn active" style="display: block; text-align: center; text-decoration: none; padding: 10px 0; font-size: 8px; font-weight: bold; width: 100%; border: 2px solid var(--border-rust); background-color: var(--text-active); color: #000; box-shadow: var(--glow-shadow-green);">
+            [ VIEW PROJECT DESCRIPTION ]
+          </a>
+        </div>
+      `;
+      legend.style.display = "block";
+      legend.style.background = "none";
+      legend.style.border = "none";
+      legend.style.padding = "0";
     }
     
     // Trigger typewriter summary
@@ -1863,11 +1931,21 @@ function highlightMediaArtChoice(activeIndex) {
     document.getElementById("dialogSpeaker").textContent = "SYSTEM";
     updateAvatarVisibility("SYSTEM");
     
+    const legend = document.getElementById("controlsLegend");
+    if (legend) {
+      legend.style.display = "none";
+    }
+    
     const viewportImg = document.getElementById("viewportImage");
     if (viewportImg) {
       viewportImg.src = "assets/world_map.png";
       viewportImg.style.filter = "none";
+      viewportImg.style.objectFit = "cover";
       viewportImg.classList.remove("hidden");
+    }
+    const vpContent = document.getElementById("viewportContent");
+    if (vpContent) {
+      vpContent.style.backgroundColor = "";
     }
     
     if (activeIndex === MEDIA_ART_WORLDS.length) {
@@ -2333,6 +2411,53 @@ document.getElementById("playlistNextBtn").addEventListener("click", () => {
 document.getElementById("playlistMuteBtn").addEventListener("click", () => {
   playClickSound();
   toggleMutePlayer();
+});
+
+function returnToHome() {
+  playClickSound();
+  
+  // Exit world detail and clear dialogue states
+  isViewingWorldDetail = false;
+  dialogueCallback = null;
+  stopTypewriter();
+  
+  // Hide spec widget, hide controls legend
+  const projectSpec = document.getElementById("projectSpecWidget");
+  if (projectSpec) projectSpec.classList.add("hidden");
+  const legend = document.getElementById("controlsLegend");
+  if (legend) legend.style.display = "none";
+  
+  // Clear any playing video iframe
+  const iframeEl = document.getElementById("viewportIframe");
+  if (iframeEl) {
+    iframeEl.src = "";
+    iframeEl.classList.add("hidden");
+  }
+  
+  // Hide viewport image, reset background
+  const viewportImg = document.getElementById("viewportImage");
+  if (viewportImg) viewportImg.classList.add("hidden");
+  const vpContent = document.getElementById("viewportContent");
+  if (vpContent) vpContent.style.backgroundColor = "";
+  
+  // Reset dossier and map state variables
+  currentDossierState = "map";
+  lastCategoryState = "map";
+  currentChoiceIndex = 0;
+  
+  // Reset dialog box speaker and text
+  document.getElementById("dialogSpeaker").textContent = "YEJUN";
+  updateAvatarVisibility("YEJUN");
+  document.getElementById("dialogText").textContent = "Select a folder to inspect.";
+  document.getElementById("dialogChoicesPanel").classList.remove("active");
+  document.getElementById("dialogChoicesPanel").innerHTML = "";
+  
+  // Finally, activate the Main Menu scene
+  activateScene("menu");
+}
+
+document.getElementById("btnHome").addEventListener("click", () => {
+  returnToHome();
 });
 
 document.getElementById("btnBackToMap").addEventListener("click", () => {
