@@ -225,10 +225,14 @@ function stopAmbientHum() {
 const WORLDS = [
   {
     id: "korea_smart",
-    name: "I am not smart anymore",
+    name: "I AM NOT SMART ANYMORE",
     type: "Seoul, Korea // Drama",
     desc: "A character-driven story questioning intellect and identity in the fast-paced heart of Seoul.",
-    image: "assets/photo_seoul.png",
+    logline: "A character-driven story questioning intellect and identity in the fast-paced heart of Seoul.",
+    format: "FMV Game",
+    runningTime: "approx. 40 min - 1hr",
+    currentStatus: "In development",
+    image: "assets/korea_smart.jpg",
     filter: "saturate(1.2) contrast(1.1) brightness(0.95)",
     link: "https://github.com/LimYejun",
     linkText: "[ VIEW SEOUL PROJECT ]",
@@ -240,8 +244,12 @@ const WORLDS = [
     name: "Tourists",
     type: "Pohang, Korea // Scenic Narrative",
     desc: "An exploration of transient visitors and memories left behind along the coastal lines of Pohang.",
-    image: "assets/world_surreal.png",
-    filter: "hue-rotate(280deg) saturate(1.3)",
+    logline: "An exploration of transient visitors and memories left behind along the coastal lines of Pohang.",
+    format: "Scenic Narrative // Experimental Video",
+    runningTime: "approx. 10 min",
+    currentStatus: "Completed",
+    image: "assets/korea_pohang.jpg",
+    filter: "none",
     link: "https://github.com/LimYejun",
     linkText: "[ VIEW POHANG PROJECT ]",
     cx: 345, cy: 125,
@@ -252,7 +260,11 @@ const WORLDS = [
     name: "HO",
     type: "Jeollanam-do, Korea // Regional Folklore",
     desc: "A rich narrative journey through the misty agricultural planes and traditions of Jeollanam-do.",
-    image: "assets/world_leaves.png",
+    logline: "A rich narrative journey through the misty agricultural planes and traditions of Jeollanam-do.",
+    format: "Regional Folklore // Documentary Short",
+    runningTime: "approx. 20 min",
+    currentStatus: "Completed",
+    image: "assets/korea_ho.jpg",
     filter: "sepia(0.2) saturate(1.4) contrast(1.05)",
     link: "https://github.com/LimYejun",
     linkText: "[ VIEW HO PROJECT ]",
@@ -263,9 +275,13 @@ const WORLDS = [
     id: "korea_gyeongbuk",
     name: "Chiggy-ggun",
     type: "Gyeongsangbuk-do, Korea // Historical Folk",
-    desc: "A storytelling project centering around traditional A-frame jigge carriers in Gyeongsangbuk-do.",
-    image: "assets/photo_seoul.png",
-    filter: "hue-rotate(180deg) saturate(0.8) contrast(1.2)",
+    desc: "Chiggy-ggun은 FMV game 형식으로 developing하는 중이다.",
+    logline: "Chiggy-ggun은 FMV game 형식으로 developing하는 중이다.",
+    format: "Historical Folk // Interactive Web Game",
+    runningTime: "N/A",
+    currentStatus: "Developing",
+    image: "assets/korea_gyeongbuk.png",
+    filter: "none",
     link: "https://korean-war-porter.vercel.app/",
     linkText: "[ PLAY GAME IN NEW WINDOW ]",
     cx: 346, cy: 121,
@@ -274,10 +290,14 @@ const WORLDS = [
   {
     id: "korea_loess",
     name: "Taste Of Loess",
-    type: "Mendoza-Incheon Connected // Live-action Short Film",
-    desc: "A live-action short film in progress, bridging the loess soils of Incheon, Korea with Mendoza, Argentina.",
-    image: "assets/world_crt.png",
-    filter: "sepia(0.4) saturate(1.2) contrast(1.1)",
+    type: "Mendoza-Incheon Connected // Live-action Short Film [IN PROGRESS]",
+    desc: "A live-action short film currently in progress, bridging the loess soils of Incheon, Korea with Mendoza, Argentina.",
+    logline: "A live-action short film bridging the loess soils of Incheon, Korea with Mendoza, Argentina.",
+    format: "Live-action Short Film",
+    runningTime: "approx. 30 min",
+    currentStatus: "In Progress",
+    image: "assets/korea_loess.jpg",
+    filter: "none",
     link: "https://github.com/LimYejun",
     linkText: "[ VIEW TASTE OF LOESS ]",
     cx: 130, cy: 240, // Mendoza, Argentina
@@ -291,6 +311,10 @@ const WORLDS = [
     name: "Bigball / Economic",
     type: "Manhattan, New York // Meta AI Cinema",
     desc: "A cutting-edge meta AI cinema piece analyzing economic power dynamics in Manhattan, New York.",
+    logline: "A cutting-edge meta AI cinema piece analyzing economic power dynamics in Manhattan, New York.",
+    format: "Meta AI Cinema // Short Video",
+    runningTime: "approx. 5 min",
+    currentStatus: "Completed",
     image: "assets/world_crt.png",
     filter: "contrast(1.3) brightness(0.85) grayscale(20%)",
     link: "https://youtu.be/Uaq6Gbmo6C4",
@@ -301,11 +325,15 @@ const WORLDS = [
   },
   {
     id: "china_jade",
-    name: "I want to hug you but I have no hands",
+    name: "I Have No Arms, but I Want to Hold You",
     type: "China // Solar-punk Drama",
     desc: "A touching speculative fiction narrative set in a solar-punk China, exploring touch, technology, and isolation.",
-    image: "assets/world_samorost.png",
-    filter: "hue-rotate(50deg) saturate(1.3)",
+    logline: "A touching speculative fiction narrative set in a solar-punk China, exploring touch, technology, and isolation.",
+    format: "Solar-punk Drama // Digital Narrative",
+    runningTime: "N/A",
+    currentStatus: "Completed",
+    image: "assets/china_jade.jpg",
+    filter: "none",
     link: "https://github.com/LimYejun",
     linkText: "[ VIEW CHINA PROJECT ]",
     cx: 310, cy: 125,
@@ -316,8 +344,12 @@ const WORLDS = [
     name: "The Intrepreneur",
     type: "Syria-Canada Connected // 3-channel Multi Video",
     desc: "An immersive 3-channel multi-video documentary mapping entrepreneurial spirits spanning Damascus, Syria and Montreal, Canada.",
-    image: "assets/world_desk.png",
-    filter: "sepia(0.4) saturate(1.2) contrast(1.1)",
+    logline: "An immersive 3-channel multi-video documentary mapping entrepreneurial spirits spanning Damascus, Syria and Montreal, Canada.",
+    format: "3-channel Video Installation // Documentary",
+    runningTime: "N/A",
+    currentStatus: "Completed",
+    image: "assets/syria_canada.jpg",
+    filter: "none",
     link: "https://github.com/LimYejun",
     linkText: "[ VIEW INTREPRENEUR ]",
     cx: 90, cy: 75, // Canada
@@ -328,13 +360,17 @@ const WORLDS = [
   },
   {
     id: "venice_joseon",
-    name: "The bright world (광명세계)",
+    name: "The Luminous World",
     type: "Venice-Joseon Connected // Historic Narrative",
     desc: "A connected historic narrative bridging Venice, Italy and the Joseon Dynasty of Korea, exploring early global ties.",
-    image: "assets/world_leaves.png",
-    filter: "hue-rotate(120deg) brightness(0.95)",
+    logline: "A connected historic narrative bridging Venice, Italy and the Joseon Dynasty of Korea, exploring early global ties.",
+    format: "Historic Narrative // Experimental Video",
+    runningTime: "N/A",
+    currentStatus: "Completed",
+    image: "assets/venice_joseon.jpg",
+    filter: "none",
     link: "https://github.com/LimYejun",
-    linkText: "[ EXPLORE THE BRIGHT WORLD ]",
+    linkText: "[ EXPLORE THE Luminous World ]",
     cx: 205, cy: 105, // Venice, Italy
     cx2: 338, cy2: 122, // Joseon Dynasty, Korea
     label1: "Venice",
@@ -343,9 +379,13 @@ const WORLDS = [
   },
   {
     id: "space_nebula",
-    name: "Nebula Outpost",
+    name: "Homestudy",
     type: "Outer Space // Atmospheric Diary",
     desc: "A sci-fi interactive diary of a research scientist operating a solar observatory near a glowing purple nebula.",
+    logline: "A sci-fi interactive diary of a research scientist operating a solar observatory near a glowing purple nebula.",
+    format: "Atmospheric Diary // Interactive Website",
+    runningTime: "N/A",
+    currentStatus: "Completed",
     image: "assets/world_surreal.png",
     filter: "hue-rotate(240deg) saturate(1.8) contrast(1.3)",
     link: "https://github.com/LimYejun",
@@ -355,32 +395,157 @@ const WORLDS = [
   },
   {
     id: "space_broadcast",
-    name: "Deep Broadcast",
+    name: "The resonance of Sskurl Family",
     type: "Outer Space // Cosmic Signal Decipher",
     desc: "An audio-visual game deciphering strange retro signals broadcast from an abandoned alien probe in the deep void.",
-    image: "assets/world_crt.png",
-    filter: "hue-rotate(140deg) contrast(1.4) brightness(0.8)",
+    logline: "An audio-visual game deciphering strange retro signals broadcast from an abandoned alien probe in the deep void.",
+    format: "Cosmic Signal Decipher // Audio-Visual Game",
+    runningTime: "N/A",
+    currentStatus: "Completed",
+    image: "assets/space_broadcast.jpg",
+    filter: "none",
     link: "https://github.com/LimYejun",
     linkText: "[ LISTEN TO SIGNAL ]",
     cx: 370, cy: 30,
     connections: []
+  },
+  {
+    id: "media_plant_diary",
+    name: "Plant Diary",
+    type: "Media Art // Exhibition",
+    desc: "An interactive media art installation capturing the silent dialogues and emotional registers of domestic plants over time.",
+    logline: "An interactive media art installation capturing the silent dialogues and emotional registers of domestic plants over time.",
+    format: "Media Art // Interactive Installation",
+    image: "assets/media_plant_diary.jpg",
+    filter: "saturate(1.2) contrast(1.1) brightness(0.9)",
+    link: "https://app.notion.com/p/Plant-talk-Art-tech-for-L-I-F-E-3704445ef4af80cb8700e13e8e898b69",
+    linkText: "[ EXPLORE ON NOTION ]",
+    iframe: "https://www.youtube.com/embed/MTCXuWFPz40?autoplay=1",
+    cx: 315, cy: 155,
+    connections: []
+  },
+  {
+    id: "media_garden_memories",
+    name: "Garden of Memories",
+    type: "Bexco, Busan // TouchDesigner & LED",
+    desc: "An immersive 3m x 3m LED media art installation utilizing TouchDesigner, exhibited at 2025 CoSHOW Bexco.",
+    logline: "An immersive 3m x 3m LED media art installation utilizing TouchDesigner, exhibited at 2025 CoSHOW Bexco.",
+    format: "TouchDesigner Installation // 3m x 3m LED, 2025",
+    image: "assets/media_garden_memories.png",
+    filter: "none",
+    link: "https://app.notion.com/p/Garden-of-Memories-TouchDesigner-3m-x3m-LED-2025-CoSHOW-Bex-3704445ef4af8018bba9d86a652fd6cb",
+    linkText: "[ EXPLORE ON NOTION ]",
+    iframe: "https://www.youtube.com/embed/hzD5_q7hxys?autoplay=1",
+    cx: 348, cy: 148,
+    connections: []
   }
 ];
 
+const MAP_WORLDS = WORLDS.filter(w => !w.id.startsWith("media_"));
+const MEDIA_ART_WORLDS = WORLDS.filter(w => w.id.startsWith("media_"));
+
+function updateInfoDoc(world) {
+  const infoContent = document.querySelector(".info-box .widget-content");
+  if (!infoContent) return;
+  
+  if (world) {
+    if (world.id === "warm_warmy_home") {
+      infoContent.innerHTML = `
+        <p><strong>TITLE:</strong> warm, Warmy, HOME.</p>
+        <p><strong>FORMAT:</strong> Short Film</p>
+        <p><strong>RUNNING TIME:</strong> 36min</p>
+        <p><strong>GENRE:</strong> Occult, Drama</p>
+      `;
+    } else if (world.id === "smart_film") {
+      infoContent.innerHTML = `
+        <p><strong>TITLE:</strong> I AM NOT SMART ANYMORE</p>
+        <p><strong>FORMAT:</strong> 크게 3분기</p>
+        <p><strong>RUNNING TIME:</strong> approx. 15 min</p>
+        <p><strong>CURRENT STATUS:</strong> Completed</p>
+      `;
+    } else if (world.id.startsWith("media_")) {
+      const isGarden = world.id === "media_garden_memories";
+      if (isGarden) {
+        infoContent.innerHTML = `
+          <p><strong>EXHIBITION DATE:</strong> 2025.10</p>
+          <p><strong>LOCATION:</strong> Bexco, Busan</p>
+          <p><strong>FORMAT:</strong> LED Sphere</p>
+          <p><strong>USED TOOL:</strong> Java, TouchDesigner</p>
+          <p><strong>ROLE:</strong> AI Visual, Project Planner</p>
+        `;
+      } else {
+        infoContent.innerHTML = `
+          <p><strong>EXHIBITION DATE:</strong> 2026.03-2026.04</p>
+          <p><strong>LOCATION:</strong> Guri Art Hall</p>
+          <p><strong>FORMAT:</strong> Projection, Book, 1-Channel video</p>
+          <p><strong>USED TOOL:</strong> Java, Touchdesigner</p>
+          <p><strong>ROLE:</strong> Visual, Project Planner</p>
+        `;
+      }
+    } else {
+      infoContent.innerHTML = `
+        <p><strong>TITLE:</strong> ${world.name}</p>
+        <p><strong>FORMAT:</strong> ${world.format || "N/A"}</p>
+        <p><strong>RUNNING TIME:</strong> ${world.runningTime || "N/A"}</p>
+        <p><strong>CURRENT STATUS:</strong> ${world.currentStatus || "N/A"}</p>
+      `;
+    }
+  } else {
+    // Default Lim Yejun profile
+    infoContent.innerHTML = `
+      <p><strong>SUBJECT:</strong> LIM YEJUN</p>
+      <p><strong>LOCATION:</strong> SEOUL, SOUTH KOREA</p>
+      <p><strong>DISCIPLINE:</strong> FILM MAKER, STORY-TELLER</p>
+      <p><strong>CURRENT STATUS:</strong> STUDENT (LAST SEMESTER) STUDYING FILM-MAKING, MULTI-MEDIA</p>
+    `;
+  }
+}
+
 // Special info dossier node
 const DOSSIER_NODE = {
-  speaker: "YEJUN_AI",
-  text: "SUBJECT DOSSIER // Lim Yejun. Film maker and story-teller. Current Status: Student (Last semester enrolling) studying film-making & multi-media. Located in Seoul, South Korea.",
+  speaker: "YEJUN",
+  text: "SUBJECT DOSSIER // Lim Yejun. Film maker and story-teller. Current Status: Student (Last semester) studying film-making & multi-media. Located in Seoul, South Korea.",
   choices: [
     { text: "[Read Technical Skillset Sheet]", action: "skills" },
-    { text: "[Read Artistic Philosophy Sheet]", action: "philosophy" },
+    { text: "[Read Artistic Vision Sheet]", action: "philosophy" },
+    { text: "[Read Filmography Sheet]", action: "filmography" },
+    { text: "[Return to Main Directory]", action: "map" }
+  ]
+};
+
+const FILMOGRAPHY_NODE = {
+  speaker: "YEJUN",
+  text: "FILMOGRAPHY // Select a project to inspect.",
+  choices: [
+    { text: "[ warm, Warmy, HOME. (2024) ]", action: "warm_warmy_home" },
+    { text: "[ Bigball (AI Film) ]", action: "bigball_project" },
+    { text: "[ I AM NOT SMART ANYMORE (Short Film) ]", action: "smart_film" },
+    { text: "[Return to Dossier Menu]", action: "dossier" },
+    { text: "[Return to Main Directory]", action: "map" }
+  ]
+};
+
+const WARM_WARMY_HOME_NODE = {
+  speaker: "YEJUN",
+  text: "warm, Warmy, HOME. (2024, 36 min) // Striving to find the emotional origins of our minds and cells, this short film explores occult elements combined with dramatic storytelling.",
+  choices: [
+    { text: "[Return to Filmography Menu]", action: "filmography" },
+    { text: "[Return to Main Directory]", action: "map" }
+  ]
+};
+
+const SMART_FILM_NODE = {
+  speaker: "YEJUN",
+  text: "I AM NOT SMART ANYMORE (Short Film) // In a near-future where smart glasses are smarter than people, Mingu feels the urge to kill his boss. His smart glasses, G, notices this three days before he acts. The story of Mingu, who dreams of the perfect crime — and G, who should stop him.",
+  choices: [
+    { text: "[Return to Filmography Menu]", action: "filmography" },
     { text: "[Return to Main Directory]", action: "map" }
   ]
 };
 
 const SKILLS_NODE = {
-  speaker: "YEJUN_AI",
-  text: "SYSTEM SPEC // Technical capabilities: HTML5 layout systems, Vanilla CSS/JS design structures, Web Audio API synthesis, responsive structures, and autonomous multi-agent pipelines.",
+  speaker: "YEJUN",
+  text: "SYSTEM SPEC // Skills: Photography, Videography & Video Editing, Character/Poster Design, Cinematic AI practice, Story-telling. Familiar with: Touchdesigner, Blender.",
   choices: [
     { text: "[Return to Dossier Menu]", action: "dossier" },
     { text: "[Return to Main Directory]", action: "map" }
@@ -388,8 +553,8 @@ const SKILLS_NODE = {
 };
 
 const PHILOSOPHY_NODE = {
-  speaker: "YEJUN_AI",
-  text: "CREATIVE DIRECTIVE // Focuses on digital nostalgia, liminal space environments, and mid-90s psychological horror aesthetics. Striving to replace clean corporate layouts with textured weight.",
+  speaker: "YEJUN",
+  text: "CREATIVE VISION // Striving for multi-media storytelling, my goal is to tell stories that move the human heart—delving into the origins of our minds and cells, and connecting with the shared essence of humanity that transcends any geography or era, bound by our ultimate physical existence.",
   choices: [
     { text: "[Return to Dossier Menu]", action: "dossier" },
     { text: "[Return to Main Directory]", action: "map" }
@@ -403,10 +568,12 @@ let isTypewriting = false;
 let typewriteInterval = null;
 let currentTextToType = "";
 let currentTypedLength = 0;
+let dialogueCallback = null; // Callback for JRPG dialog progression
 let currentChoiceIndex = 0; // Highlighted menu/dossier item OR map node index
 let sceneActiveIndex = 0; // 0: audio, 1: boot, 2: menu, 3: game, 4: shutdown
 let isViewingWorldDetail = false;
 let currentDossierState = "map"; // map, dossier, skills, philosophy
+let lastCategoryState = "map"; // map or media_art
 
 // DOM Cache
 const scenes = {
@@ -446,6 +613,25 @@ function activateScene(sceneName) {
       if (scenes[key]) scenes[key].classList.remove("active");
     }
   });
+  
+  // Manage scanlines display - show only during initial boot screen scenes
+  const scanlineOverlay = document.querySelector(".scanlines");
+  const btnScanlines = document.getElementById("btnToggleScanlines");
+  if (scanlineOverlay) {
+    if (sceneName === "audio" || sceneName === "boot") {
+      scanlineOverlay.style.display = "block";
+      if (btnScanlines) {
+        btnScanlines.classList.add("active");
+        btnScanlines.textContent = "ON";
+      }
+    } else {
+      scanlineOverlay.style.display = "none";
+      if (btnScanlines) {
+        btnScanlines.classList.remove("active");
+        btnScanlines.textContent = "OFF";
+      }
+    }
+  }
   
   // Manage back button visibility for non-game scenes
   const backBtn = document.getElementById("btnBackToMap");
@@ -527,7 +713,7 @@ function startBootSequence() {
       clearInterval(progressInterval);
       
       setTimeout(() => {
-        triggerGlitchEffect(() => {
+        runCinematicGlitchTransition(() => {
           activateScene("menu");
           if (!isSoundMuted) startAmbientHum();
         });
@@ -535,6 +721,159 @@ function startBootSequence() {
     }
     if (loadingBar) loadingBar.style.width = progress + "%";
   }, 100);
+}
+
+/**
+ * Synthesizes retro cinematic sound effects for the film glitch transition
+ */
+function playTransitionAudio(step) {
+  if (!isAudioEnabled || isSoundMuted || !audioCtx) return;
+  const now = audioCtx.currentTime;
+  
+  if (step === 1) {
+    // Film projector startup clicked humming
+    const humOsc = audioCtx.createOscillator();
+    const humFilter = audioCtx.createBiquadFilter();
+    const humGain = audioCtx.createGain();
+    
+    humOsc.type = 'sawtooth';
+    humOsc.frequency.setValueAtTime(60, now);
+    
+    humFilter.type = 'bandpass';
+    humFilter.frequency.setValueAtTime(120, now);
+    humFilter.Q.setValueAtTime(12, now);
+    
+    humGain.gain.setValueAtTime(0, now);
+    humGain.gain.linearRampToValueAtTime(0.1, now + 0.15);
+    humGain.gain.exponentialRampToValueAtTime(0.001, now + 3.6);
+    
+    humOsc.connect(humFilter);
+    humFilter.connect(humGain);
+    humGain.connect(masterGain);
+    humOsc.start(now);
+    humOsc.stop(now + 3.9);
+    
+    // Quick clicks
+    for (let i = 0; i < 4; i++) {
+      const clickDelay = i * 0.66;
+      const clickOsc = audioCtx.createOscillator();
+      const clickG = audioCtx.createGain();
+      clickOsc.type = 'triangle';
+      clickOsc.frequency.setValueAtTime(180 + Math.random() * 180, now + clickDelay);
+      
+      clickG.gain.setValueAtTime(0, now);
+      clickG.gain.setValueAtTime(0.06, now + clickDelay);
+      clickG.gain.exponentialRampToValueAtTime(0.001, now + clickDelay + 0.09);
+      
+      clickOsc.connect(clickG);
+      clickG.connect(masterGain);
+      clickOsc.start(now);
+      clickOsc.stop(now + clickDelay + 0.12);
+    }
+  } else if (step === 2) {
+    // Deep Sub-Bass sweep impact + glitch static
+    const subOsc = audioCtx.createOscillator();
+    const subGain = audioCtx.createGain();
+    subOsc.type = 'sine';
+    subOsc.frequency.setValueAtTime(85, now);
+    subOsc.frequency.exponentialRampToValueAtTime(30, now + 2.7);
+    
+    subGain.gain.setValueAtTime(0.4, now);
+    subGain.gain.exponentialRampToValueAtTime(0.001, now + 3.3);
+    
+    subOsc.connect(subGain);
+    subGain.connect(masterGain);
+    subOsc.start(now);
+    subOsc.stop(now + 3.6);
+    
+    // High static glitch scream
+    const noise = audioCtx.createOscillator();
+    const noiseGain = audioCtx.createGain();
+    noise.type = 'sawtooth';
+    noise.frequency.setValueAtTime(1400, now);
+    noise.frequency.exponentialRampToValueAtTime(350, now + 0.75);
+    
+    noiseGain.gain.setValueAtTime(0.04, now);
+    noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.75);
+    
+    noise.connect(noiseGain);
+    noiseGain.connect(masterGain);
+    noise.start(now);
+    noise.stop(now + 0.9);
+  }
+}
+
+/**
+ * Handles the dramatic sepia film-stock glitch zoom-in transition
+ */
+function runCinematicGlitchTransition(onComplete) {
+  const overlay = document.getElementById("filmGlitchOverlay");
+  const loaderContainer = document.getElementById("bootLoaderContainer");
+  const earthWrapper = document.getElementById("transitionEarthWrapper");
+  const textContainer = document.getElementById("storyTextContainer");
+  const textSubject = document.getElementById("storySubject");
+  const whiteOut = document.getElementById("whiteOutOverlay");
+  const countdownOverlay = document.querySelector(".cinema-countdown-overlay");
+  const countdownNum = document.getElementById("countdownNum");
+  
+  if (!overlay || !loaderContainer || !earthWrapper || !textContainer || !textSubject || !whiteOut) {
+    if (onComplete) onComplete();
+    return;
+  }
+  
+  // 1. Hide loader panel, show film overlay, activate cinema countdown, and play sound
+  loaderContainer.style.display = "none";
+  overlay.classList.remove("hidden");
+  if (countdownOverlay) {
+    countdownOverlay.classList.add("active");
+  }
+  if (countdownNum) {
+    countdownNum.textContent = "3";
+  }
+  playTransitionAudio(1);
+  
+  // 2. Trigger earth glitch-zoom
+  setTimeout(() => {
+    earthWrapper.classList.add("zoom-glitch");
+  }, 300);
+  
+  // 3. Show "Story of Earth" text and update countdown to 2
+  setTimeout(() => {
+    if (countdownNum) countdownNum.textContent = "2";
+    textContainer.classList.remove("hidden");
+    textContainer.classList.add("active");
+  }, 2700);
+  
+  // 4. Change "Earth" to "US", trigger heavy zoom on text, update countdown to 1, and play deep impact sound
+  setTimeout(() => {
+    if (countdownNum) countdownNum.textContent = "1";
+    textSubject.textContent = "US";
+    textContainer.classList.add("zoom-us");
+    playTransitionAudio(2);
+  }, 5100);
+  
+  // 5. White-out flash screen and disable countdown overlay
+  setTimeout(() => {
+    if (countdownOverlay) {
+      countdownOverlay.classList.remove("active");
+    }
+    whiteOut.classList.remove("hidden");
+    whiteOut.classList.add("active");
+  }, 8250);
+  
+  // 6. Complete transition and reveal the portfolio main page
+  setTimeout(() => {
+    if (onComplete) onComplete();
+    
+    // Smoothly fade out the white out overlay
+    setTimeout(() => {
+      whiteOut.classList.remove("active");
+      setTimeout(() => {
+        whiteOut.classList.add("hidden");
+        overlay.classList.add("hidden");
+      }, 1650);
+    }, 300);
+  }, 10050);
 }
 
 /**
@@ -574,35 +913,44 @@ function buildSVGMap() {
 
   
   // 2. Draw nodes and names
-  WORLDS.forEach((world, index) => {
+  MAP_WORLDS.forEach((world, index) => {
     const drawNode = (cx, cy, labelSuffix, isPrimary = true) => {
       const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
       
-      const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-      circle.setAttribute("cx", cx);
-      circle.setAttribute("cy", cy);
-      circle.setAttribute("r", "8");
-      
+      const pin = document.createElementNS("http://www.w3.org/2000/svg", "path");
       const nodeId = isPrimary ? `node-${world.id}` : `node-${world.id}-sec`;
-      circle.setAttribute("id", nodeId);
-      circle.setAttribute("class", "map-node");
+      pin.setAttribute("id", nodeId);
+      pin.setAttribute("class", "map-node");
       
-      // Label text
+      // Pin path geometry: points down to (cx, cy)
+      const d = `M ${cx},${cy} L ${cx - 5},${cy - 10} A 6.5,6.5 0 1,1 ${cx + 5},${cy - 10} Z`;
+      pin.setAttribute("d", d);
+      
+      // Inner circle for pushpin center hole
+      const innerDot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      innerDot.setAttribute("cx", cx);
+      innerDot.setAttribute("cy", cy - 14);
+      innerDot.setAttribute("r", "2");
+      innerDot.setAttribute("fill", "#120e0b");
+      innerDot.setAttribute("pointer-events", "none");
+      
+      // Label text (shifted slightly higher to align with the pin head)
       const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
       text.setAttribute("x", cx + 12);
-      text.setAttribute("y", cy + 5);
+      text.setAttribute("y", cy - 10);
       
       const labelId = isPrimary ? `label-${world.id}` : `label-${world.id}-sec`;
       text.setAttribute("id", labelId);
       text.setAttribute("class", "map-node-label");
       text.textContent = labelSuffix;
       
-      group.appendChild(circle);
+      group.appendChild(pin);
+      group.appendChild(innerDot);
       group.appendChild(text);
       nodesGroup.appendChild(group);
       
       // Mouse Interaction
-      circle.addEventListener("mouseenter", () => {
+      pin.addEventListener("mouseenter", () => {
         if (sceneActiveIndex === 3 && !isViewingWorldDetail && currentDossierState === "map") {
           currentChoiceIndex = index;
           highlightMapNode(index);
@@ -610,7 +958,7 @@ function buildSVGMap() {
         }
       });
       
-      circle.addEventListener("click", () => {
+      pin.addEventListener("click", () => {
         if (sceneActiveIndex === 3 && !isViewingWorldDetail && currentDossierState === "map") {
           currentChoiceIndex = index;
           highlightMapNode(index);
@@ -625,24 +973,25 @@ function buildSVGMap() {
       drawNode(world.cx2, world.cy2, world.label2 || "Syria", false);
     } else {
       let shortLabel = world.name.split(" ")[0];
-      if (world.id === "space_nebula") shortLabel = "Space-1";
-      if (world.id === "space_broadcast") shortLabel = "Space-2";
+      if (world.id === "space_nebula") shortLabel = "Homestudy";
+      if (world.id === "space_broadcast") shortLabel = "Skurrrr";
       drawNode(world.cx, world.cy, shortLabel, true);
     }
   });
 }
 
 function highlightMapNode(activeIndex) {
-  const activeWorld = WORLDS[activeIndex];
+  updateInfoDoc(null);
+  const isSystemChoice = activeIndex >= MAP_WORLDS.length;
   
   // Update node elements active class
-  WORLDS.forEach((world, index) => {
+  MAP_WORLDS.forEach((world, index) => {
     const nodeEl = document.getElementById(`node-${world.id}`);
     const labelEl = document.getElementById(`label-${world.id}`);
     const secNodeEl = document.getElementById(`node-${world.id}-sec`);
     const secLabelEl = document.getElementById(`label-${world.id}-sec`);
     
-    if (index === activeIndex) {
+    if (!isSystemChoice && index === activeIndex) {
       if (nodeEl) nodeEl.classList.add("active");
       if (labelEl) labelEl.classList.add("active");
       if (secNodeEl) secNodeEl.classList.add("active");
@@ -659,23 +1008,39 @@ function highlightMapNode(activeIndex) {
   const allLines = document.querySelectorAll(".map-lines line");
   allLines.forEach(line => line.classList.remove("glow"));
   
-  const activeLines = document.querySelectorAll(`.map-lines line.w-${activeWorld.id}`);
-  activeLines.forEach(line => line.classList.add("glow"));
-  
-  // Set speaker label
-  document.getElementById("dialogSpeaker").textContent = "YEJUN_AI";
-  updateAvatarVisibility("YEJUN_AI");
-  
-  // Viewport Info
-  document.getElementById("viewportTitle").textContent = `SECTOR // ${activeWorld.name.toUpperCase()}`;
-  document.getElementById("viewportCaption").textContent = `Type: ${activeWorld.type}. Awaiting inspection.`;
+  if (!isSystemChoice) {
+    const activeWorld = MAP_WORLDS[activeIndex];
+    const activeLines = document.querySelectorAll(`.map-lines line.w-${activeWorld.id}`);
+    activeLines.forEach(line => line.classList.add("glow"));
+    
+    // Set speaker label
+    document.getElementById("dialogSpeaker").textContent = "YEJUN";
+    updateAvatarVisibility("YEJUN");
+    
+    // Viewport Info
+    document.getElementById("viewportTitle").textContent = `SECTOR // ${activeWorld.name.toUpperCase()}`;
+    document.getElementById("viewportCaption").textContent = `Type: ${activeWorld.type}. Awaiting inspection.`;
+    
+    // Trigger typewriter summary
+    const summaryText = `SYSTEM CONNECTOR // Highlighted Node: ${activeWorld.name}. Construct class: ${activeWorld.type}. [Press ENTER to explore world]`;
+    startTypewriter(summaryText);
+  } else {
+    document.getElementById("dialogSpeaker").textContent = "SYSTEM";
+    updateAvatarVisibility("SYSTEM");
+    
+    if (activeIndex === MAP_WORLDS.length) {
+      document.getElementById("viewportTitle").textContent = "SYSTEM // OPTION";
+      document.getElementById("viewportCaption").textContent = "Switch database category.";
+      startTypewriter("SYSTEM OPTION // Switch database category to Media Art installations (Plant Diary, Garden of Memories). [Press ENTER to execute]");
+    } else if (activeIndex === MAP_WORLDS.length + 1) {
+      document.getElementById("viewportTitle").textContent = "SYSTEM // OPTION";
+      document.getElementById("viewportCaption").textContent = "View subject dossier.";
+      startTypewriter("SYSTEM OPTION // View personal profile, skills, and artistic vision. [Press ENTER to execute]");
+    }
+  }
   
   // Render folder choices inside JRPG textbox
   renderMapFolders();
-  
-  // Trigger typewriter summary
-  const summaryText = `SYSTEM CONNECTOR // Highlighted Node: ${activeWorld.name}. Construct class: ${activeWorld.type}. [Press ENTER to explore world]`;
-  startTypewriter(summaryText);
 }
 
 /**
@@ -683,11 +1048,51 @@ function highlightMapNode(activeIndex) {
  */
 function enterWorldDetail(world) {
   isViewingWorldDetail = true;
+  document.getElementById("dialogChoicesPanel").classList.remove("active");
+  updateInfoDoc(world);
+  
+  // Hide standard Keyboard Controls, show PLAY SHORT TEXT GAME and VIEW SHORT AI FILM if Chiggy-ggun
+  const legend = document.getElementById("controlsLegend");
+  if (legend) {
+    if (world.id === "korea_gyeongbuk") {
+      legend.innerHTML = `
+        <div style="display: flex; flex-direction: column; gap: 8px; width: 100%;">
+          <a href="https://korean-war-porter.vercel.app/" target="_blank" class="control-toggle-btn active" style="display: block; text-align: center; text-decoration: none; padding: 10px 0; font-size: 8px; font-weight: bold; width: 100%; border: 2px solid var(--border-rust); background-color: var(--text-active); color: #000; box-shadow: var(--glow-shadow-green);">
+            [ PLAY SHORT TEXT GAME ]
+          </a>
+          <a href="https://youtu.be/UDBbA58deLM" target="_blank" class="control-toggle-btn active" style="display: block; text-align: center; text-decoration: none; padding: 10px 0; font-size: 8px; font-weight: bold; width: 100%; border: 2px solid var(--border-rust); background-color: var(--text-active); color: #000; box-shadow: var(--glow-shadow-green);">
+            [ VIEW SHORT AI FILM ]
+          </a>
+        </div>
+      `;
+      legend.style.display = "block";
+      legend.style.background = "none";
+      legend.style.border = "none";
+      legend.style.padding = "0";
+    } else {
+      legend.style.display = "none";
+    }
+  }
   
   const backBtn = document.getElementById("btnBackToMap");
   if (backBtn) {
     backBtn.textContent = "[ ◀ BACK ]";
     backBtn.classList.remove("hidden");
+    backBtn.focus();
+  }
+  
+  // Hide Device Status, Show Work Spec in Sidebar
+  const deviceStatus = document.getElementById("deviceStatusWidget");
+  if (deviceStatus) deviceStatus.classList.add("hidden");
+  
+  const projectSpec = document.getElementById("projectSpecWidget");
+  const projectSpecContent = document.getElementById("projectSpecContent");
+  if (projectSpec && projectSpecContent) {
+    projectSpecContent.innerHTML = `
+      <p><strong>LOGLINE:</strong> ${world.logline || world.desc}</p>
+      <p style="margin-top: 10px; padding-top: 8px; border-top: 1px dashed rgba(90, 70, 60, 0.15);"><strong>FORMAT:</strong> ${world.format || "N/A"}</p>
+    `;
+    projectSpec.classList.remove("hidden");
   }
   
   triggerGlitchEffect(() => {
@@ -740,6 +1145,21 @@ function enterWorldDetail(world) {
 
 function exitWorldDetail() {
   isViewingWorldDetail = false;
+  dialogueCallback = null; // Clear active callback
+  
+  // Hide controls legend on exiting detailed view
+  const legend = document.getElementById("controlsLegend");
+  if (legend) {
+    legend.style.display = "none";
+  }
+  
+  // Show Device Status, Hide Work Spec
+  const deviceStatus = document.getElementById("deviceStatusWidget");
+  if (deviceStatus) deviceStatus.classList.remove("hidden");
+  
+  const projectSpec = document.getElementById("projectSpecWidget");
+  if (projectSpec) projectSpec.classList.add("hidden");
+  
   disableSidebarPortalLink();
   
   const backBtn = document.getElementById("btnBackToMap");
@@ -755,10 +1175,34 @@ function exitWorldDetail() {
   }
   
   triggerGlitchEffect(() => {
-    document.getElementById("worldMapSvg").classList.remove("hidden");
-    document.getElementById("viewportImage").classList.add("hidden");
-    
-    highlightMapNode(currentChoiceIndex);
+    if (currentDossierState === "media_art") {
+      document.getElementById("worldMapSvg").classList.add("hidden");
+      const viewportImg = document.getElementById("viewportImage");
+      if (viewportImg) {
+        viewportImg.src = "assets/world_map.png";
+        viewportImg.style.filter = "none";
+        viewportImg.style.objectFit = "cover";
+        viewportImg.classList.remove("hidden");
+      }
+      highlightMediaArtChoice(currentChoiceIndex);
+    } else if (["dossier", "skills", "philosophy", "filmography", "warm_warmy_home", "smart_film"].includes(currentDossierState)) {
+      document.getElementById("worldMapSvg").classList.add("hidden");
+      const viewportImg = document.getElementById("viewportImage");
+      if (viewportImg) {
+        viewportImg.src = "assets/seoul_look_up.png";
+        viewportImg.style.filter = "none";
+        viewportImg.style.objectFit = "contain";
+        viewportImg.classList.remove("hidden");
+      }
+      if (currentDossierState === "filmography") {
+        currentChoiceIndex = 1;
+      }
+      goToDossierNode(currentDossierState, true);
+    } else {
+      document.getElementById("worldMapSvg").classList.remove("hidden");
+      document.getElementById("viewportImage").classList.add("hidden");
+      highlightMapNode(currentChoiceIndex);
+    }
   });
 }
 
@@ -773,7 +1217,11 @@ function renderDetailChoices() {
   if (activeWorld && activeWorld.link && activeWorld.link !== "https://github.com/LimYejun") {
     choices.push({ text: activeWorld.linkText || "[Execute Portal Link]", action: "portal" });
   }
-  choices.push({ text: "[Return to World Map]", action: "map" });
+  if (currentDossierState === "filmography") {
+    choices.push({ text: "[Return to Filmography Menu]", action: "map" });
+  } else {
+    choices.push({ text: "[Return to World Map]", action: "map" });
+  }
   
   currentChoiceIndex = 0; // reuse index for choices
   
@@ -808,7 +1256,17 @@ function executeDetailChoiceAction(action) {
     }
   } else if (action === "map") {
     // Return index context back to the active world node index
-    currentChoiceIndex = findActiveWorldIndex();
+    const activeWorldIndex = findActiveWorldIndex();
+    if (activeWorldIndex !== -1) {
+      const activeWorld = WORLDS[activeWorldIndex];
+      if (currentDossierState === "media_art") {
+        currentChoiceIndex = MEDIA_ART_WORLDS.findIndex(w => w.id === activeWorld.id);
+        if (currentChoiceIndex === -1) currentChoiceIndex = 0;
+      } else {
+        currentChoiceIndex = MAP_WORLDS.findIndex(w => w.id === activeWorld.id);
+        if (currentChoiceIndex === -1) currentChoiceIndex = 0;
+      }
+    }
     exitWorldDetail();
   }
 }
@@ -832,13 +1290,29 @@ function updateAvatarVisibility(speaker) {
   }
 }
 
-function goToDossierNode(state) {
+function goToDossierNode(state, preserveIndex = false) {
   currentDossierState = state;
   let node = null;
   
-  if (state === "dossier") node = DOSSIER_NODE;
-  else if (state === "skills") node = SKILLS_NODE;
-  else if (state === "philosophy") node = PHILOSOPHY_NODE;
+  if (state === "dossier") {
+    node = DOSSIER_NODE;
+    updateInfoDoc(null);
+  } else if (state === "skills") {
+    node = SKILLS_NODE;
+    updateInfoDoc(null);
+  } else if (state === "philosophy") {
+    node = PHILOSOPHY_NODE;
+    updateInfoDoc(null);
+  } else if (state === "filmography") {
+    node = FILMOGRAPHY_NODE;
+    updateInfoDoc(null);
+  } else if (state === "warm_warmy_home") {
+    node = WARM_WARMY_HOME_NODE;
+    updateInfoDoc({ id: "warm_warmy_home" });
+  } else if (state === "smart_film") {
+    node = SMART_FILM_NODE;
+    updateInfoDoc({ id: "smart_film" });
+  }
   
   if (!node) return;
   
@@ -852,6 +1326,7 @@ function goToDossierNode(state) {
   if (backBtn) {
     backBtn.textContent = "[ ◀ BACK ]";
     backBtn.classList.remove("hidden");
+    backBtn.focus();
   }
   
   // Hide SVG map, but show the dossier image icon in the viewport
@@ -870,7 +1345,7 @@ function goToDossierNode(state) {
   if (vTitle) vTitle.textContent = "DOSSIER // THE STORY-TELLER";
   
   const vCaption = document.getElementById("viewportCaption");
-  if (vCaption) vCaption.textContent = "A retro silhouette of a child looking up at the Seoul skyline.";
+  if (vCaption) vCaption.textContent = "";
   
   document.getElementById("dialogSpeaker").textContent = node.speaker;
   updateAvatarVisibility(node.speaker);
@@ -878,14 +1353,16 @@ function goToDossierNode(state) {
   document.getElementById("dialogChoicesPanel").classList.remove("active");
   
   startTypewriter(node.text, () => {
-    renderDossierChoices(node.choices);
+    renderDossierChoices(node.choices, preserveIndex);
   });
 }
 
-function renderDossierChoices(choices) {
+function renderDossierChoices(choices, preserveIndex = false) {
   const choicesPanel = document.getElementById("dialogChoicesPanel");
   choicesPanel.innerHTML = "";
-  currentChoiceIndex = 0;
+  if (!preserveIndex || currentChoiceIndex >= choices.length || currentChoiceIndex < 0) {
+    currentChoiceIndex = 0;
+  }
   
   choices.forEach((choice, index) => {
     const btn = document.createElement("button");
@@ -912,7 +1389,8 @@ function renderDossierChoices(choices) {
 
 function executeDossierChoiceAction(action) {
   if (action === "map") {
-    currentDossierState = "map";
+    currentDossierState = lastCategoryState;
+    dialogueCallback = null; // Clear callback
     
     const backBtn = document.getElementById("btnBackToMap");
     if (backBtn) {
@@ -921,16 +1399,33 @@ function executeDossierChoiceAction(action) {
     }
     
     triggerGlitchEffect(() => {
-      document.getElementById("worldMapSvg").classList.remove("hidden");
       const viewportImg = document.getElementById("viewportImage");
-      if (viewportImg) viewportImg.classList.add("hidden");
       const iframeEl = document.getElementById("viewportIframe");
       if (iframeEl) {
         iframeEl.src = "";
         iframeEl.classList.add("hidden");
       }
-      highlightMapNode(0);
+      
+      if (currentDossierState === "media_art") {
+        document.getElementById("worldMapSvg").classList.add("hidden");
+        if (viewportImg) {
+          viewportImg.src = "assets/world_map.png";
+          viewportImg.style.filter = "none";
+          viewportImg.style.objectFit = "cover";
+          viewportImg.classList.remove("hidden");
+        }
+        highlightMediaArtChoice(0);
+      } else {
+        document.getElementById("worldMapSvg").classList.remove("hidden");
+        if (viewportImg) viewportImg.classList.add("hidden");
+        highlightMapNode(0);
+      }
     });
+  } else if (action === "bigball_project") {
+    const bigballWorld = WORLDS.find(w => w.id === "usa_manhattan");
+    if (bigballWorld) {
+      enterWorldDetail(bigballWorld);
+    }
   } else {
     goToDossierNode(action);
   }
@@ -944,6 +1439,7 @@ function startTypewriter(text, onComplete) {
   isTypewriting = true;
   currentTextToType = text;
   currentTypedLength = 0;
+  dialogueCallback = onComplete; // Store callback
   
   const textContainer = document.getElementById("dialogText");
   const caret = document.getElementById("dialogCaret");
@@ -960,17 +1456,15 @@ function startTypewriter(text, onComplete) {
         playTypewriterSound();
       }
     } else {
-      completeTypewriter(onComplete);
+      completeTypewriter();
     }
   }, 25);
 }
 
-function completeTypewriter(onComplete) {
+function completeTypewriter() {
   stopTypewriter();
   document.getElementById("dialogText").textContent = currentTextToType;
   document.getElementById("dialogCaret").classList.add("active");
-  
-  if (onComplete) onComplete();
 }
 
 function stopTypewriter() {
@@ -983,21 +1477,7 @@ function stopTypewriter() {
 
 function skipTypewriter() {
   if (!isTypewriting) return;
-  
-  // Decide which node script is executing based on state context
-  let completionCallback = null;
-  
-  if (isViewingWorldDetail) {
-    completionCallback = () => renderDetailChoices();
-  } else if (currentDossierState !== "map") {
-    let node = null;
-    if (currentDossierState === "dossier") node = DOSSIER_NODE;
-    else if (currentDossierState === "skills") node = SKILLS_NODE;
-    else if (currentDossierState === "philosophy") node = PHILOSOPHY_NODE;
-    completionCallback = () => renderDossierChoices(node.choices);
-  }
-  
-  completeTypewriter(completionCallback);
+  completeTypewriter();
 }
 
 // ==========================================================================
@@ -1041,6 +1521,9 @@ function selectCurrentChoice() {
     if (currentDossierState === "dossier") node = DOSSIER_NODE;
     else if (currentDossierState === "skills") node = SKILLS_NODE;
     else if (currentDossierState === "philosophy") node = PHILOSOPHY_NODE;
+    else if (currentDossierState === "filmography") node = FILMOGRAPHY_NODE;
+    else if (currentDossierState === "warm_warmy_home") node = WARM_WARMY_HOME_NODE;
+    else if (currentDossierState === "smart_film") node = SMART_FILM_NODE;
     
     if (node && node.choices[currentChoiceIndex]) {
       playClickSound();
@@ -1077,10 +1560,10 @@ function triggerShutdownSequence() {
 // GRID NAVIGATION & FOLDER RENDERING STYLES
 // ==========================================================================
 function navigateMapGrid(direction) {
-  const count = WORLDS.length; // 11
+  const count = MAP_WORLDS.length + 2; // 13 choices
   let r = Math.floor(currentChoiceIndex / 2);
   let c = currentChoiceIndex % 2;
-  const numRows = Math.ceil(count / 2); // 6
+  const numRows = Math.ceil(count / 2); // 7 rows
   
   if (direction === "ArrowUp") {
     r = (r - 1 + numRows) % numRows;
@@ -1127,21 +1610,24 @@ function renderMapFolders() {
   const choicesPanel = document.getElementById("dialogChoicesPanel");
   if (!choicesPanel) return;
   
+  const totalChoices = MAP_WORLDS.length + 2;
+  
   // Prevent duplicate renders to stop typewriter layout reset
-  if (choicesPanel.classList.contains("active") && choicesPanel.children.length === WORLDS.length && !isViewingWorldDetail && currentDossierState === "map") {
+  if (choicesPanel.classList.contains("active") && choicesPanel.children.length === totalChoices && !isViewingWorldDetail && currentDossierState === "map") {
     updateChoiceSelectionHighlight();
     return;
   }
   
   choicesPanel.innerHTML = "";
   
-  WORLDS.forEach((world, index) => {
+  // Render MAP_WORLDS folders
+  MAP_WORLDS.forEach((world, index) => {
     const btn = document.createElement("button");
     btn.className = "choice-btn";
     btn.setAttribute("role", "button");
     
     const folderNum = (index + 1) < 10 ? `0${index + 1}` : `${index + 1}`;
-    btn.innerHTML = `<span class="pointer">&gt;</span> 📁 Folder ${folderNum}: ${world.name.split(" ")[0]}`;
+    btn.innerHTML = `<span class="pointer">&gt;</span> 📁 Folder ${folderNum}: ${world.name}`;
     
     btn.addEventListener("mouseenter", () => {
       if (!isViewingWorldDetail && currentDossierState === "map") {
@@ -1161,15 +1647,258 @@ function renderMapFolders() {
     choicesPanel.appendChild(btn);
   });
   
+  // Render Switch to Media Art Button
+  const btnMedia = document.createElement("button");
+  btnMedia.className = "choice-btn system-choice";
+  btnMedia.setAttribute("role", "button");
+  btnMedia.innerHTML = `<span class="pointer">&gt;</span> 📂 [ MEDIA ART ]`;
+  btnMedia.addEventListener("mouseenter", () => {
+    if (!isViewingWorldDetail && currentDossierState === "map") {
+      currentChoiceIndex = MAP_WORLDS.length;
+      highlightMapNode(MAP_WORLDS.length);
+      playClickSound();
+    }
+  });
+  btnMedia.addEventListener("click", () => {
+    if (!isViewingWorldDetail && currentDossierState === "map") {
+      playClickSound();
+      switchToMediaArt();
+    }
+  });
+  choicesPanel.appendChild(btnMedia);
+  
+  // Render Dossier Button
+  const btnDossier = document.createElement("button");
+  btnDossier.className = "choice-btn system-choice";
+  btnDossier.setAttribute("role", "button");
+  btnDossier.innerHTML = `<span class="pointer">&gt;</span> 📂 [ PROFILE DOSSIER ]`;
+  btnDossier.addEventListener("mouseenter", () => {
+    if (!isViewingWorldDetail && currentDossierState === "map") {
+      currentChoiceIndex = MAP_WORLDS.length + 1;
+      highlightMapNode(MAP_WORLDS.length + 1);
+      playClickSound();
+    }
+  });
+  btnDossier.addEventListener("click", () => {
+    if (!isViewingWorldDetail && currentDossierState === "map") {
+      playClickSound();
+      goToDossierNode("dossier");
+    }
+  });
+  choicesPanel.appendChild(btnDossier);
+  
   choicesPanel.classList.add("active");
   updateChoiceSelectionHighlight();
+}
+
+function switchToMediaArt() {
+  currentDossierState = "media_art";
+  lastCategoryState = "media_art";
+  currentChoiceIndex = 0;
+  dialogueCallback = null;
+  
+  const backBtn = document.getElementById("btnBackToMap");
+  if (backBtn) {
+    backBtn.textContent = "[ ◀ BACK ]";
+    backBtn.classList.remove("hidden");
+  }
+  
+  triggerGlitchEffect(() => {
+    document.getElementById("worldMapSvg").classList.add("hidden");
+    const viewportImg = document.getElementById("viewportImage");
+    if (viewportImg) {
+      viewportImg.src = "assets/world_map.png"; // Earth background theme for Media Art category
+      viewportImg.style.filter = "none";
+      viewportImg.style.objectFit = "cover";
+      viewportImg.classList.remove("hidden");
+    }
+    const iframeEl = document.getElementById("viewportIframe");
+    if (iframeEl) {
+      iframeEl.src = "";
+      iframeEl.classList.add("hidden");
+    }
+    
+    highlightMediaArtChoice(0);
+  });
+}
+
+function switchToMap() {
+  currentDossierState = "map";
+  lastCategoryState = "map";
+  currentChoiceIndex = 0;
+  dialogueCallback = null;
+  
+  const backBtn = document.getElementById("btnBackToMap");
+  if (backBtn) {
+    backBtn.textContent = "[ ◀ BACK ]";
+    backBtn.classList.remove("hidden");
+  }
+  
+  triggerGlitchEffect(() => {
+    document.getElementById("worldMapSvg").classList.remove("hidden");
+    const viewportImg = document.getElementById("viewportImage");
+    if (viewportImg) viewportImg.classList.add("hidden");
+    const iframeEl = document.getElementById("viewportIframe");
+    if (iframeEl) {
+      iframeEl.src = "";
+      iframeEl.classList.add("hidden");
+    }
+    
+    highlightMapNode(0);
+  });
+}
+
+function renderMediaArtFolders() {
+  const choicesPanel = document.getElementById("dialogChoicesPanel");
+  if (!choicesPanel) return;
+  
+  const totalChoices = MEDIA_ART_WORLDS.length + 2;
+  
+  if (choicesPanel.classList.contains("active") && choicesPanel.children.length === totalChoices && !isViewingWorldDetail && currentDossierState === "media_art") {
+    updateChoiceSelectionHighlight();
+    return;
+  }
+  
+  choicesPanel.innerHTML = "";
+  
+  // Render MEDIA_ART_WORLDS folders
+  MEDIA_ART_WORLDS.forEach((world, index) => {
+    const btn = document.createElement("button");
+    btn.className = "choice-btn";
+    btn.setAttribute("role", "button");
+    
+    const folderNum = (index + 1) < 10 ? `0${index + 1}` : `${index + 1}`;
+    btn.innerHTML = `<span class="pointer">&gt;</span> 📁 Folder ${folderNum}: ${world.name}`;
+    
+    btn.addEventListener("mouseenter", () => {
+      if (!isViewingWorldDetail && currentDossierState === "media_art") {
+        currentChoiceIndex = index;
+        highlightMediaArtChoice(index);
+        playClickSound();
+      }
+    });
+    
+    btn.addEventListener("click", () => {
+      if (!isViewingWorldDetail && currentDossierState === "media_art") {
+        currentChoiceIndex = index;
+        enterWorldDetail(world);
+      }
+    });
+    
+    choicesPanel.appendChild(btn);
+  });
+  
+  // Render Switch to World Map Button
+  const btnMap = document.createElement("button");
+  btnMap.className = "choice-btn system-choice";
+  btnMap.setAttribute("role", "button");
+  btnMap.innerHTML = `<span class="pointer">&gt;</span> 📂 [ WORLD MAP ]`;
+  btnMap.addEventListener("mouseenter", () => {
+    if (!isViewingWorldDetail && currentDossierState === "media_art") {
+      currentChoiceIndex = MEDIA_ART_WORLDS.length;
+      highlightMediaArtChoice(MEDIA_ART_WORLDS.length);
+      playClickSound();
+    }
+  });
+  btnMap.addEventListener("click", () => {
+    if (!isViewingWorldDetail && currentDossierState === "media_art") {
+      playClickSound();
+      switchToMap();
+    }
+  });
+  choicesPanel.appendChild(btnMap);
+  
+  // Render Dossier Button
+  const btnDossier = document.createElement("button");
+  btnDossier.className = "choice-btn system-choice";
+  btnDossier.setAttribute("role", "button");
+  btnDossier.innerHTML = `<span class="pointer">&gt;</span> 📂 [ PROFILE DOSSIER ]`;
+  btnDossier.addEventListener("mouseenter", () => {
+    if (!isViewingWorldDetail && currentDossierState === "media_art") {
+      currentChoiceIndex = MEDIA_ART_WORLDS.length + 1;
+      highlightMediaArtChoice(MEDIA_ART_WORLDS.length + 1);
+      playClickSound();
+    }
+  });
+  btnDossier.addEventListener("click", () => {
+    if (!isViewingWorldDetail && currentDossierState === "media_art") {
+      playClickSound();
+      goToDossierNode("dossier");
+    }
+  });
+  choicesPanel.appendChild(btnDossier);
+  
+  choicesPanel.classList.add("active");
+  updateChoiceSelectionHighlight();
+}
+
+function highlightMediaArtChoice(activeIndex) {
+  const isSystemChoice = activeIndex >= MEDIA_ART_WORLDS.length;
+  
+  if (!isSystemChoice) {
+    const activeWorld = MEDIA_ART_WORLDS[activeIndex];
+    updateInfoDoc(activeWorld);
+    
+    // Set speaker label
+    document.getElementById("dialogSpeaker").textContent = "YEJUN";
+    updateAvatarVisibility("YEJUN");
+    
+    // Viewport Info
+    document.getElementById("viewportTitle").textContent = `PREVIEW // ${activeWorld.name.toUpperCase()}`;
+    document.getElementById("viewportCaption").textContent = `Type: ${activeWorld.type}. Awaiting inspection.`;
+    
+    const viewportImg = document.getElementById("viewportImage");
+    if (viewportImg) {
+      viewportImg.src = activeWorld.image;
+      viewportImg.style.filter = activeWorld.filter;
+      viewportImg.style.objectFit = "cover";
+      viewportImg.classList.remove("hidden");
+    }
+    
+    // Trigger typewriter summary
+    const summaryText = `MEDIA ART SOURCE // Highlighted Node: ${activeWorld.name}. Class: ${activeWorld.type}. [Press ENTER to explore project]`;
+    startTypewriter(summaryText);
+  } else {
+    updateInfoDoc(null);
+    document.getElementById("dialogSpeaker").textContent = "SYSTEM";
+    updateAvatarVisibility("SYSTEM");
+    
+    const viewportImg = document.getElementById("viewportImage");
+    if (viewportImg) {
+      viewportImg.src = "assets/world_map.png";
+      viewportImg.style.filter = "none";
+      viewportImg.classList.remove("hidden");
+    }
+    
+    if (activeIndex === MEDIA_ART_WORLDS.length) {
+      document.getElementById("viewportTitle").textContent = "SYSTEM // OPTION";
+      document.getElementById("viewportCaption").textContent = "Switch database category.";
+      startTypewriter("SYSTEM OPTION // Switch database category to World Map stories. [Press ENTER to execute]");
+    } else if (activeIndex === MEDIA_ART_WORLDS.length + 1) {
+      document.getElementById("viewportTitle").textContent = "SYSTEM // OPTION";
+      document.getElementById("viewportCaption").textContent = "View subject dossier.";
+      startTypewriter("SYSTEM OPTION // View personal profile, skills, and artistic vision. [Press ENTER to execute]");
+    }
+  }
+  
+  renderMediaArtFolders();
+}
+
+function selectMediaArtChoice(activeIndex) {
+  if (activeIndex < MEDIA_ART_WORLDS.length) {
+    enterWorldDetail(MEDIA_ART_WORLDS[activeIndex]);
+  } else if (activeIndex === MEDIA_ART_WORLDS.length) {
+    switchToMap();
+  } else if (activeIndex === MEDIA_ART_WORLDS.length + 1) {
+    goToDossierNode("dossier");
+  }
 }
 
 // ==========================================================================
 // KEYBOARD CONTROL BINDINGS
 // ==========================================================================
 window.addEventListener("keydown", (e) => {
-  if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Space", "Enter"].includes(e.key)) {
+  if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Space", "Enter", "Escape", "Backspace"].includes(e.key)) {
     e.preventDefault();
   }
   
@@ -1210,6 +1939,16 @@ window.addEventListener("keydown", (e) => {
       return;
     }
     
+    if (dialogueCallback) {
+      if (e.key === "Enter" || e.key === " " || e.key === "ArrowDown") {
+        playClickSound();
+        const cb = dialogueCallback;
+        dialogueCallback = null;
+        cb();
+      }
+      return;
+    }
+    
     if (isViewingWorldDetail) {
       // In world details choice menu
       const activeWorld = WORLDS[findActiveWorldIndex()];
@@ -1229,13 +1968,39 @@ window.addEventListener("keydown", (e) => {
       } else if (e.key === "Enter" || e.key === " ") {
         selectCurrentChoice();
       } else if (e.key === "Escape" || e.key === "Backspace") {
-        currentChoiceIndex = findActiveWorldIndex();
+        const activeWorldIndex = findActiveWorldIndex();
+        if (activeWorldIndex !== -1) {
+          const activeWorld = WORLDS[activeWorldIndex];
+          if (currentDossierState === "media_art") {
+            currentChoiceIndex = MEDIA_ART_WORLDS.findIndex(w => w.id === activeWorld.id);
+            if (currentChoiceIndex === -1) currentChoiceIndex = 0;
+          } else {
+            currentChoiceIndex = MAP_WORLDS.findIndex(w => w.id === activeWorld.id);
+            if (currentChoiceIndex === -1) currentChoiceIndex = 0;
+          }
+        }
         exitWorldDetail();
+      }
+    } else if (currentDossierState === "media_art") {
+      const count = MEDIA_ART_WORLDS.length + 2;
+      if (e.key === "ArrowUp") {
+        playClickSound();
+        currentChoiceIndex = (currentChoiceIndex - 1 + count) % count;
+        highlightMediaArtChoice(currentChoiceIndex);
+      } else if (e.key === "ArrowDown") {
+        playClickSound();
+        currentChoiceIndex = (currentChoiceIndex + 1) % count;
+        highlightMediaArtChoice(currentChoiceIndex);
+      } else if (e.key === "Enter" || e.key === " ") {
+        selectMediaArtChoice(currentChoiceIndex);
+      } else if (e.key === "Escape" || e.key === "Backspace") {
+        switchToMap();
       }
     } else if (currentDossierState !== "map") {
       // In biography/skills dossier layout
-      let count = 3; // dossier options count
-      if (currentDossierState === "skills" || currentDossierState === "philosophy") count = 2;
+      let count = 4; // dossier options count
+      if (currentDossierState === "filmography") count = 5;
+      else if (currentDossierState === "skills" || currentDossierState === "philosophy" || currentDossierState === "warm_warmy_home" || currentDossierState === "smart_film") count = 2;
       
       if (e.key === "ArrowUp") {
         playClickSound();
@@ -1255,7 +2020,13 @@ window.addEventListener("keydown", (e) => {
       if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
         navigateMapGrid(e.key);
       } else if (e.key === "Enter" || e.key === " ") {
-        enterWorldDetail(WORLDS[currentChoiceIndex]);
+        if (currentChoiceIndex < MAP_WORLDS.length) {
+          enterWorldDetail(MAP_WORLDS[currentChoiceIndex]);
+        } else if (currentChoiceIndex === MAP_WORLDS.length) {
+          switchToMediaArt();
+        } else if (currentChoiceIndex === MAP_WORLDS.length + 1) {
+          goToDossierNode("dossier");
+        }
       } else if (e.key === "Escape" || e.key === "Backspace") {
         playClickSound();
         activateScene("menu");
@@ -1347,6 +2118,25 @@ document.getElementById("btnToggleScanlines").addEventListener("click", (e) => {
 document.getElementById("dialogCaret").addEventListener("click", () => {
   if (sceneActiveIndex === 3 && isTypewriting) {
     skipTypewriter();
+  }
+});
+
+// Click on dialogue box to skip typewriter or proceed dialogue
+document.querySelector(".dialog-box-container").addEventListener("click", () => {
+  if (sceneActiveIndex === 3) {
+    const choicesPanel = document.getElementById("dialogChoicesPanel");
+    if (choicesPanel && choicesPanel.classList.contains("active")) {
+      return;
+    }
+    
+    if (isTypewriting) {
+      skipTypewriter();
+    } else if (dialogueCallback) {
+      playClickSound();
+      const cb = dialogueCallback;
+      dialogueCallback = null;
+      cb();
+    }
   }
 });
 
@@ -1476,7 +2266,7 @@ function updatePlayerUI() {
   
   if (ticker) {
     const trackNum = (currentTrackIndex + 1) < 10 ? `0${currentTrackIndex + 1}` : `${currentTrackIndex + 1}`;
-    ticker.textContent = `MONTH'S CHOICE // Track ${trackNum}: ${PLAYLIST[currentTrackIndex].title}`;
+    ticker.textContent = `Monthly Choice // Track ${trackNum}: ${PLAYLIST[currentTrackIndex].title}`;
   }
   
   if (playBtn) {
@@ -1548,7 +2338,17 @@ document.getElementById("playlistMuteBtn").addEventListener("click", () => {
 document.getElementById("btnBackToMap").addEventListener("click", () => {
   playClickSound();
   if (isViewingWorldDetail) {
-    currentChoiceIndex = findActiveWorldIndex();
+    const activeWorldIndex = findActiveWorldIndex();
+    if (activeWorldIndex !== -1) {
+      const activeWorld = WORLDS[activeWorldIndex];
+      if (currentDossierState === "media_art") {
+        currentChoiceIndex = MEDIA_ART_WORLDS.findIndex(w => w.id === activeWorld.id);
+        if (currentChoiceIndex === -1) currentChoiceIndex = 0;
+      } else {
+        currentChoiceIndex = MAP_WORLDS.findIndex(w => w.id === activeWorld.id);
+        if (currentChoiceIndex === -1) currentChoiceIndex = 0;
+      }
+    }
     exitWorldDetail();
   } else if (currentDossierState !== "map") {
     executeDossierChoiceAction("map");
@@ -1563,4 +2363,10 @@ window.addEventListener("DOMContentLoaded", () => {
   activateScene("audio");
   sceneActiveIndex = 0;
   initYouTubePlayer();
+  window.focus();
+});
+
+// Refocus window on click to retain keyboard controls
+document.addEventListener("click", () => {
+  window.focus();
 });
