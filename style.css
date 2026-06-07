@@ -193,7 +193,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100%;
-  background-color: #030405;
+  background: linear-gradient(rgba(3, 4, 5, 0.72), rgba(3, 4, 5, 0.72)), url('assets/reed_field_rainbow.png') center/cover no-repeat;
   text-align: center;
   padding: 40px;
 }
@@ -212,30 +212,53 @@ body {
   margin-bottom: 40px;
 }
 
-.warning-box {
-  border: 2px solid var(--border-alert);
-  background-color: rgba(155, 44, 44, 0.1);
+.caution-box {
+  border: 2px solid #c87a15;
+  background-color: rgba(200, 122, 21, 0.15);
+  backdrop-filter: blur(4px);
   padding: 20px 30px;
   max-width: 600px;
   margin-bottom: 40px;
   text-align: left;
 }
 
-.warning-tag {
+.caution-tag {
   display: inline-block;
-  background-color: var(--border-alert);
-  color: #fff;
+  background-color: #c87a15;
+  color: #000;
+  font-weight: bold;
   padding: 2px 8px;
   font-size: 10px;
   margin-bottom: 15px;
   letter-spacing: 1px;
 }
 
-.warning-text {
+.caution-text {
   font-size: 9px;
   line-height: 1.8;
-  color: #c9ceca;
+  color: #f5f5f5;
   letter-spacing: 0.5px;
+}
+
+.boot-prompt-container .retro-btn {
+  border: 2px solid #c87a15;
+  color: #c87a15;
+  text-shadow: 0 0 4px rgba(200, 122, 21, 0.4);
+}
+
+.boot-prompt-container .retro-btn:hover, .boot-prompt-container .retro-btn:focus {
+  background-color: #c87a15;
+  color: #000;
+  box-shadow: 0 0 15px rgba(200, 122, 21, 0.6);
+}
+
+.boot-prompt-container .retro-btn-sub {
+  color: #a68b58;
+}
+
+.boot-prompt-container .retro-btn-sub:hover {
+  color: #c87a15;
+  text-decoration: underline;
 }
 
 .retro-btn {
@@ -327,29 +350,25 @@ body {
   border-radius: 50%;
   border: 3px solid #5a463c; /* Walnut color outline */
   overflow: hidden;
-  background-color: #3b82f6; /* Colorful blue ocean! */
+  background-color: #a7d4f1; /* Match pastel blue ocean of pixel continents image! */
   position: relative;
   display: flex;
   align-items: center;
 }
 
-.continents {
-  position: absolute;
-  top: 10px;
-  left: 0;
-  width: 200px;
-  height: 60px;
-  animation: scroll-continents 6s linear infinite;
-  opacity: 0.95;
+.pixel-continents-scroller {
+  width: 200%;
+  height: 100%;
+  background-image: url('assets/pixel_continents.png');
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  image-rendering: pixelated;
+  animation: scroll-continents-pixel 8s linear infinite;
 }
 
-.continents path {
-  fill: #2ec4b6 !important; /* Colorful green/teal continents! */
-}
-
-@keyframes scroll-continents {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100px); }
+@keyframes scroll-continents-pixel {
+  0% { background-position-x: 0; }
+  100% { background-position-x: -200%; }
 }
 
 /* Spinning rainbow ring surrounding the earth, not overlapping */
@@ -453,7 +472,7 @@ body {
   letter-spacing: 4px;
   text-shadow: 0 0 10px rgba(234, 63, 63, 0.3), 3px 3px 0px rgba(0,0,0,0.9);
   color: #e5e7eb;
-  margin-bottom: 10px;
+  margin-bottom: 75px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -463,7 +482,7 @@ body {
 .sub-title-glow {
   font-size: 16px;
   color: var(--text-glow-red);
-  letter-spacing: 12px;
+  letter-spacing: 8px;
   text-shadow: var(--glow-shadow-red);
   margin-left: 10px;
 }
@@ -529,12 +548,21 @@ body {
 /* ==========================================================================
    SCENE 3: PORTFOLIO INTERACTIVE BOARD (THE GAME)
    ========================================================================== */
+#sceneGame {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 15px;
+  height: 100%;
+  padding: 25px;
+  box-sizing: border-box;
+}
+
 .game-grid {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
   gap: 20px;
-  padding: 25px 25px 185px 25px; /* bottom padding is large to clear fixed dialog box */
-  height: 100%;
+  flex: 1;
+  min-height: 0;
   position: relative;
   z-index: 3;
 }
@@ -543,6 +571,7 @@ body {
 .media-column {
   display: flex;
   flex-direction: column;
+  min-height: 0;
 }
 
 .viewport-frame {
@@ -555,6 +584,7 @@ body {
   overflow: hidden;
   box-shadow: var(--panel-shadow);
   position: relative;
+  min-height: 0;
 }
 
 .viewport-frame::before {
@@ -612,6 +642,7 @@ body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  min-height: 0;
 }
 
 /* Pixel/Dither Overlay filter for loaded images */
@@ -865,10 +896,8 @@ body {
    JRPG BOX / DIALOG & CHOICE SYSTEM
    ========================================================================== */
 .dialog-box-container {
-  position: absolute;
-  bottom: 25px;
-  left: 25px;
-  right: 25px;
+  position: relative;
+  width: 100%;
   height: 140px;
   background-color: var(--panel-bg);
   border: 4px double var(--border-rust-light);
@@ -972,10 +1001,26 @@ body {
   border-radius: 4px;
   display: none; /* Active via JS */
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(6, 1fr);
-  gap: 4px 12px;
-  padding: 6px 12px;
+  grid-auto-rows: max-content;
+  gap: 6px 12px;
+  padding: 8px 12px;
   overflow-y: auto;
+}
+
+/* Retro styled custom scrollbar */
+.dialog-choices-panel::-webkit-scrollbar {
+  width: 6px;
+}
+.dialog-choices-panel::-webkit-scrollbar-track {
+  background: rgba(90, 70, 60, 0.05);
+  border-radius: 3px;
+}
+.dialog-choices-panel::-webkit-scrollbar-thumb {
+  background: var(--border-rust-light);
+  border-radius: 3px;
+}
+.dialog-choices-panel::-webkit-scrollbar-thumb:hover {
+  background: var(--text-active);
 }
 
 .dialog-choices-panel.active {
@@ -987,9 +1032,9 @@ body {
   border: 1px solid rgba(255,255,255,0.05);
   color: var(--text-muted);
   font-family: var(--font-dialog);
-  font-size: 20px;
+  font-size: 14px; /* Reduced to fit long folder names */
   text-align: left;
-  padding: 6px 12px;
+  padding: 4px 8px; /* Reduced padding */
   cursor: pointer;
   outline: none;
   transition: all 0.1s;
@@ -997,6 +1042,9 @@ body {
   align-items: center;
   gap: 10px;
   border-radius: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .choice-btn.active {
@@ -1075,11 +1123,18 @@ body {
     border-radius: 12px;
   }
   
+  #sceneGame {
+    padding: 15px;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 10px;
+  }
+  
   .game-grid {
     grid-template-columns: 1fr;
-    grid-template-rows: 1.2fr auto;
-    padding-bottom: 175px;
+    grid-template-rows: auto auto;
     gap: 15px;
+    overflow-y: auto;
   }
   
   .sidebar-column {
@@ -1095,9 +1150,7 @@ body {
   }
   
   .dialog-box-container {
-    bottom: 15px;
-    left: 15px;
-    right: 15px;
+    height: 120px;
   }
 }
 
@@ -1123,7 +1176,7 @@ body {
   
   .sub-title-glow {
     font-size: 12px;
-    letter-spacing: 8px;
+    letter-spacing: 5px;
   }
   
   .menu-options {
@@ -1132,7 +1185,8 @@ body {
   
   .dialog-choices-panel {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, 1fr);
+    grid-auto-rows: max-content;
+    gap: 6px;
     overflow-y: auto;
   }
   
@@ -1204,24 +1258,24 @@ body {
   filter: drop-shadow(0 0 4px var(--text-active));
 }
 
-/* Map Nodes (Circles) */
-.map-nodes circle {
-  fill: #f0ebd8;
+/* Map Nodes (Paths/Pins) */
+.map-nodes path {
+  fill: #ebd7d5;
   stroke: #8e7a68;
-  stroke-width: 2;
+  stroke-width: 1.5;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 /* Pulsing highlight rings for active nodes */
-.map-nodes circle.active {
+.map-nodes path.active {
   fill: var(--text-active);
   stroke: #ffffff;
-  stroke-width: 3;
+  stroke-width: 2;
   filter: drop-shadow(0 0 6px var(--text-active));
 }
 
-.map-nodes circle:hover {
+.map-nodes path:hover {
   stroke: var(--text-active);
   filter: drop-shadow(0 0 4px var(--text-active));
 }
@@ -1349,4 +1403,254 @@ body {
 .playlist-btn:hover {
   background-color: #faf8f2;
   color: #c87a15;
+}
+
+/* ==========================================================================
+   CINEMATIC FILM STOCK GLITCH TRANSITION
+   ========================================================================== */
+.film-glitch-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #120e0b; /* Sepia film dark base */
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  animation: film-flicker 0.15s infinite alternate;
+}
+
+@keyframes film-flicker {
+  0% { filter: sepia(0.5) brightness(0.9) contrast(1.1); }
+  50% { filter: sepia(0.6) brightness(1.05) contrast(1.2); }
+  100% { filter: sepia(0.5) brightness(0.95) contrast(1.15); }
+}
+
+/* Moving vintage dust, scratches and noise */
+.film-grain {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.99' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.25'/%3E%3C/svg%3E");
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 202;
+}
+
+.film-scratches {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 203;
+}
+
+.film-scratches::before, .film-scratches::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 2px rgba(255, 255, 255, 0.4);
+}
+
+.film-scratches::before {
+  left: 20%;
+  animation: scratch-jitter-left 0.4s steps(4) infinite;
+}
+
+.film-scratches::after {
+  left: 75%;
+  animation: scratch-jitter-right 0.3s steps(3) infinite;
+}
+
+@keyframes scratch-jitter-left {
+  0% { transform: translateX(0); opacity: 0.8; }
+  25% { transform: translateX(120px); opacity: 0.3; }
+  50% { transform: translateX(-40px); opacity: 0.9; }
+  75% { transform: translateX(200px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 0.8; }
+}
+
+@keyframes scratch-jitter-right {
+  0% { transform: translateX(0); opacity: 0.5; }
+  33% { transform: translateX(-150px); opacity: 0; }
+  66% { transform: translateX(80px); opacity: 0.9; }
+  100% { transform: translateX(0); opacity: 0.5; }
+}
+
+/* SVG Earth Glitch-Zoom styling */
+.transition-earth-wrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 205;
+}
+
+.transition-earth {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #5a463c;
+  overflow: hidden;
+  background-color: #a7d4f1; /* Match pastel blue ocean */
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Glitch Earth zoom animation class */
+.transition-earth-wrapper.zoom-glitch {
+  animation: earth-zoom-glitch-anim 3.6s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+@keyframes earth-zoom-glitch-anim {
+  0% { transform: scale(1) translate(0, 0); }
+  10% { transform: scale(1.05) translate(-3px, 2px); filter: hue-rotate(20deg) contrast(1.3); }
+  20% { transform: scale(1.1) translate(2px, -3px); }
+  40% { transform: scale(1.3) translate(-5px, 0px) skewX(5deg); }
+  60% { transform: scale(1.8) translate(5px, -2px) skewX(-8deg) rotate(5deg); }
+  85% { transform: scale(4.5) translate(-2px, 3px); filter: grayscale(1) contrast(1.4); }
+  100% { transform: scale(10) translate(0, 0); opacity: 0; }
+}
+
+/* "Story of Earth/US" text container */
+.story-text-container {
+  position: absolute;
+  font-family: var(--font-system);
+  font-size: 24px;
+  color: #ebd7d5;
+  text-shadow: 3px 3px 0px rgba(0,0,0,0.8), 0 0 10px rgba(229, 63, 63, 0.4);
+  z-index: 210;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.story-text-container.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.story-subject {
+  color: var(--text-glow-red);
+  text-shadow: var(--glow-shadow-red);
+  font-weight: bold;
+}
+
+/* Zooming in heavily on the US text */
+.story-text-container.zoom-us {
+  transform-origin: 50% 50%;
+  animation: text-zoom-us-anim 3.3s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+@keyframes text-zoom-us-anim {
+  0% { transform: scale(1) translate(0, 0); opacity: 1; }
+  30% { transform: scale(1.2) translate(-6%, 3px) filter: hue-rotate(90deg); }
+  60% { transform: scale(3) translate(-14%, -5px) skewX(-15deg); }
+  85% { transform: scale(12) translate(-25%, 0px); filter: invert(1); opacity: 0.8; }
+  100% { transform: scale(36) translate(-29%, 0px); opacity: 0; }
+}
+
+/* White-out Screen Flash */
+.white-out-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  z-index: 300;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-out;
+}
+
+.white-out-overlay.active {
+  opacity: 1;
+}
+
+/* Cinema countdown styles */
+.cinema-countdown-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(6, 6, 8, 0.94); /* Dark movie theater screen */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.cinema-countdown-overlay.active {
+  opacity: 1;
+}
+
+/* Old film crosshairs overlay */
+.cinema-screen-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background-image: 
+    radial-gradient(circle, transparent 35%, rgba(0,0,0,0.55) 100%),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 30px 30px, 30px 30px;
+  background-position: center;
+}
+
+/* Cinema film leader countdown numbers */
+.cinema-countdown-num {
+  font-family: var(--font-system);
+  font-size: 96px;
+  color: rgba(235, 215, 213, 0.28); /* Soft faint color */
+  text-shadow: 0 0 15px rgba(235, 215, 213, 0.08);
+  z-index: 105;
+  animation: countdown-bounce 1s steps(1) infinite;
+}
+
+@keyframes countdown-bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(0.95); opacity: 0.85; }
+}
+
+/* Muybridge running horse silhouette - Full Screen Cover */
+.cinema-running-horse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vmax;
+  height: 100vmax;
+  background-image: url('assets/pixel_running_horse.png');
+  background-repeat: no-repeat;
+  background-size: 800vmax 200vmax; /* 8 cols, 2 rows */
+  image-rendering: pixelated;
+  opacity: 0.12; /* Faint backdrop shadow */
+  z-index: 104;
+  animation: horse-run-cycle-full 0.8s steps(8) infinite;
+}
+
+/* Animate through sprite frames horizontally */
+@keyframes horse-run-cycle-full {
+  0% { background-position: 0px 0px; }
+  100% { background-position: -800vmax 0px; }
+}
+
+/* Viewport Scrollability for Notion embeds */
+.portfolio-iframe {
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch;
 }
