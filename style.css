@@ -1654,3 +1654,30 @@ body {
   overflow: auto !important;
   -webkit-overflow-scrolling: touch;
 }
+
+/* Dialogue Box Home Button */
+.dialog-home-btn {
+  position: absolute;
+  top: -14px;
+  right: 20px;
+  background-color: #faf6eb;
+  border: 2px solid var(--border-rust-light);
+  padding: 4px 12px;
+  font-size: 8px;
+  color: var(--text-active);
+  font-weight: bold;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  font-family: inherit;
+  z-index: 10;
+}
+
+.dialog-home-btn:hover {
+  background-color: var(--text-active);
+  color: #000;
+  border-color: var(--border-rust);
+  box-shadow: var(--glow-shadow-green);
+}
