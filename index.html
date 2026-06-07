@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lim Yejun | Interactive Retro Portfolio</title>
- <meta name="description" content="Explore the interactive web worlds and photographic memory lane of Lim Yejun - designed in nostalgic PS1 survival horror style.">
- 
+  <meta name="description" content="Explore the interactive web worlds and photographic memory lane of Lim Yejun - designed in nostalgic PS1 survival horror style.">
+  
   <!-- Retro Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,7 +34,7 @@
         <div class="playlist-track-info">
           <span class="playlist-icon">📻</span>
           <div class="playlist-ticker-wrap">
-            <div class="playlist-ticker" id="playlistTicker">RECOMMENDED PLAYLIST // Loading lofi music...</div>
+            <div class="playlist-ticker" id="playlistTicker">Monthly Choice // Loading lofi music...</div>
           </div>
         </div>
         <div class="playlist-controls">
@@ -51,9 +51,9 @@
         <div class="boot-prompt-container">
           <h1 class="boot-title">SYSTEM STATUS: READY</h1>
           <p class="boot-subtitle">YEJUN LIM PORTFOLIO DRIVE V1.09</p>
-          <div class="warning-box">
-            <span class="warning-tag">WARNING</span>
-            <p class="warning-text">THIS SIMULATION USES SOUND SYNTHESIS FOR COMPLETE IMMERSION. PLEASE ENABLE AUDIO BEFORE PROCEEDING.</p>
+          <div class="caution-box">
+            <span class="caution-tag">CAUTION !</span>
+            <p class="caution-text">THIS PORTFOLIO SITE USES SOUND SYNTHESIS FOR COMPLETE IMMERSION. PLEASE ENABLE AUDIO BEFORE PROCEEDING.</p>
           </div>
           <button class="retro-btn pulse" id="btnBootWithAudio">
             [ RUN PORTFOLIO WITH AUDIO ]
@@ -71,9 +71,7 @@
             <!-- Spinning Earth Wrapper -->
             <div class="earth-wrapper">
               <div class="retro-earth">
-                <svg class="continents" viewBox="0 0 100 50">
-                  <path d="M5,10 Q15,5 25,12 T45,10 T65,15 T85,8 L85,42 Q75,35 60,40 T35,38 T15,45 Z M105,10 Q115,5 125,12 T145,10 T165,15 T185,8 L185,42 Q175,35 160,40 T135,38 T115,45 Z" fill="#2a221f" />
-                </svg>
+                <div class="pixel-continents-scroller"></div>
               </div>
               <div class="spinning-rainbow"></div>
             </div>
@@ -84,6 +82,28 @@
               <div class="boot-loading-bar" id="bootLoadingBar"></div>
             </div>
           </div>
+
+          <!-- Cinematic Film Glitch Transition -->
+          <div class="film-glitch-overlay hidden" id="filmGlitchOverlay">
+            <div class="film-grain"></div>
+            <div class="film-scratches"></div>
+            <div class="cinema-countdown-overlay">
+              <div class="cinema-screen-bg"></div>
+              <div class="cinema-countdown-num" id="countdownNum"></div>
+              <div class="cinema-running-horse"></div>
+            </div>
+            <div class="transition-earth-wrapper" id="transitionEarthWrapper">
+              <div class="retro-earth transition-earth" id="transitionEarth">
+                <div class="pixel-continents-scroller"></div>
+              </div>
+            </div>
+            <div class="story-text-container hidden" id="storyTextContainer">
+              <span class="story-prefix">Story of </span><span class="story-subject" id="storySubject">Earth</span>
+            </div>
+          </div>
+
+          <!-- White-out Flash Overlay -->
+          <div class="white-out-overlay hidden" id="whiteOutOverlay"></div>
         </div>
       </section>
 
@@ -94,8 +114,7 @@
         <div class="title-bg-visual"></div>
         
         <div class="main-menu-container">
-          <h1 class="game-title">YEJUN LIM<span class="sub-title-glow">ODYSSEY</span></h1>
-          <p class="game-version">MEMORY CARD BLOCK: 06-06-2026</p>
+          <h1 class="game-title">YEJUN LIM<span class="sub-title-glow">PORTFOLIO</span></h1>
           
           <nav class="menu-options" id="mainMenuNav" aria-label="Main Menu Choices">
             <button class="menu-item active" data-action="start">
@@ -160,11 +179,11 @@
                 <p><strong>SUBJECT:</strong> LIM YEJUN</p>
                 <p><strong>LOCATION:</strong> SEOUL, SOUTH KOREA</p>
                 <p><strong>DISCIPLINE:</strong> FILM MAKER, STORY-TELLER</p>
-                <p><strong>CURRENT STATUS:</strong> STUDENT(LAST 학기 ENROLLING) STUDYING FILM-MAKING, MULTI-MEDIA</p>
+                <p><strong>CURRENT STATUS:</strong> STUDENT (LAST SEMESTER) STUDYING FILM-MAKING, MULTI-MEDIA</p>
               </div>
             </div>
 
-            <div class="sidebar-widget status-box">
+            <div class="sidebar-widget status-box" id="deviceStatusWidget">
               <div class="widget-header">DEVICE STATUS</div>
               <div class="widget-content">
                 <div class="status-row">
@@ -175,10 +194,13 @@
                   <span>SCANLINES:</span>
                   <button id="btnToggleScanlines" class="control-toggle-btn active" title="Toggle retro scanlines">ON</button>
                 </div>
-                <div class="status-row">
-                  <span>WORLD PORTAL:</span>
-                  <a id="btnExternalLink" href="#" target="_blank" class="sidebar-link disabled">[ LINK DISABLED ]</a>
-                </div>
+              </div>
+            </div>
+
+            <div class="sidebar-widget status-box hidden" id="projectSpecWidget">
+              <div class="widget-header">WORK SPECIFICATION</div>
+              <div class="widget-content" id="projectSpecContent" style="padding: 12px; font-size: 8px; line-height: 1.8;">
+                <!-- Populated dynamically -->
               </div>
             </div>
 
@@ -189,7 +211,7 @@
               </div>
             </div>
             
-            <div class="controls-legend">
+            <div class="controls-legend" id="controlsLegend" style="display: none;">
               <p><strong>KEYBOARD CONTROLS:</strong></p>
               <p>[▲/▼] Navigate Choices</p>
               <p>[ENTER] Select Option</p>
@@ -201,7 +223,8 @@
 
         <!-- Dialogue Box Area (Fixed at bottom) -->
         <div class="dialog-box-container">
-          <div class="dialog-speaker" id="dialogSpeaker">YEJUN_AI</div>
+          <div class="dialog-speaker" id="dialogSpeaker">YEJUN</div>
+          <button id="btnHome" class="dialog-home-btn" title="Return to Main Menu">[ HOME ]</button>
           <div class="dialog-body">
             <div class="dialog-avatar-container" id="dialogAvatarContainer">
               <img src="assets/avatar.png" alt="Lim Yejun Avatar" class="dialog-avatar">
@@ -236,6 +259,6 @@
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=8"></script>
 </body>
 </html>
