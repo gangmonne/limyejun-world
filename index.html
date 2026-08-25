@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Lim Yejun | Interactive Retro Portfolio</title>
   <meta name="description" content="Explore the interactive web worlds and photographic memory lane of Lim Yejun - designed in nostalgic PS1 survival horror style.">
   
@@ -151,6 +151,14 @@
               <div class="viewport-content" id="viewportContent">
                 <!-- Glitch Screen Visual -->
                 <div class="viewport-glitch" id="viewportGlitch"></div>
+                <div class="map-gesture-ui" id="mapGestureUi" aria-label="Map zoom controls">
+                  <span class="map-gesture-hint" id="mapGestureHint">PINCH TO ZOOM · DRAG TO EXPLORE</span>
+                  <div class="map-zoom-controls">
+                    <button class="map-zoom-btn" id="mapZoomOut" type="button" aria-label="Zoom map out">−</button>
+                    <button class="map-zoom-btn map-reset-btn" id="mapZoomReset" type="button" aria-label="Reset map zoom">RESET</button>
+                    <button class="map-zoom-btn" id="mapZoomIn" type="button" aria-label="Zoom map in">+</button>
+                  </div>
+                </div>
                 <!-- Connected Worlds Interactive SVG Map -->
                 <svg id="worldMapSvg" class="world-map-svg" viewBox="0 0 400 300" aria-label="Interactive Map of Lim Yejun's Worlds">
                   <g id="mapLines" class="map-lines"></g>
@@ -259,6 +267,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=8"></script>
+  <script src="app.js?v=9"></script>
 </body>
 </html>

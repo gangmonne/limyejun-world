@@ -43,6 +43,13 @@ body {
   overflow: hidden;
 }
 
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  overscroll-behavior: none;
+}
+
 /* ==========================================================================
    CRT MONITOR & SCREEN LAYERS
    ========================================================================== */
@@ -1236,6 +1243,82 @@ body {
   display: block;
   z-index: 2;
   transition: opacity 0.5s ease;
+  transform-origin: center center;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  will-change: transform;
+  cursor: grab;
+}
+
+.world-map-svg:active {
+  cursor: grabbing;
+}
+
+.world-map-svg.map-transform-animated {
+  transition: opacity 0.5s ease, transform 0.2s ease-out;
+}
+
+.map-gesture-ui {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.map-gesture-ui.hidden {
+  display: none;
+}
+
+.map-gesture-hint {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  max-width: calc(100% - 16px);
+  padding: 5px 7px;
+  border: 1px solid rgba(90, 70, 60, 0.7);
+  border-radius: 3px;
+  background: rgba(250, 248, 242, 0.86);
+  color: var(--text-primary);
+  font-size: 7px;
+  letter-spacing: 0.4px;
+  box-shadow: 0 2px 8px rgba(42, 34, 31, 0.15);
+}
+
+.map-zoom-controls {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  display: flex;
+  gap: 4px;
+  pointer-events: auto;
+}
+
+.map-zoom-btn {
+  min-width: 38px;
+  min-height: 38px;
+  padding: 0 9px;
+  border: 2px solid var(--border-rust);
+  border-top-color: #fff;
+  border-left-color: #fff;
+  border-radius: 4px;
+  background: rgba(250, 248, 242, 0.94);
+  color: var(--text-primary);
+  font-family: var(--font-system);
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(42, 34, 31, 0.2);
+}
+
+.map-reset-btn {
+  min-width: 64px;
+  font-size: 7px;
+}
+
+.map-zoom-btn:active {
+  border-color: var(--border-rust);
+  background: #dfdace;
+  transform: translateY(1px);
 }
 
 .world-map-svg.hidden {
@@ -1278,6 +1361,17 @@ body {
 .map-nodes path:hover {
   stroke: var(--text-active);
   filter: drop-shadow(0 0 4px var(--text-active));
+}
+
+.map-node-hit-area {
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.map-nodes g:focus-visible .map-node {
+  stroke: #fff;
+  stroke-width: 3;
+  filter: drop-shadow(0 0 6px var(--text-active));
 }
 
 /* Node label styling */
@@ -1680,4 +1774,351 @@ body {
   color: #000;
   border-color: var(--border-rust);
   box-shadow: var(--glow-shadow-green);
+}
+
+/* ==========================================================================
+   MOBILE EXPLORATION OVERHAUL
+   ========================================================================== */
+@media (max-width: 768px) {
+  body {
+    height: 100dvh;
+    min-height: 100svh;
+    align-items: stretch;
+  }
+
+  .crt-monitor,
+  .screen-content {
+    width: 100%;
+    height: 100dvh;
+    min-height: 100svh;
+  }
+
+  .screen-content {
+    overflow: hidden;
+  }
+
+  .boot-prompt-container {
+    padding: max(24px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
+  }
+
+  .boot-title {
+    max-width: 330px;
+    font-size: clamp(17px, 5.4vw, 22px);
+    line-height: 1.45;
+  }
+
+  .boot-subtitle {
+    margin-bottom: 28px;
+    font-size: 8px;
+    line-height: 1.7;
+  }
+
+  .caution-box {
+    width: 100%;
+    padding: 18px;
+    margin-bottom: 28px;
+  }
+
+  .boot-prompt-container .retro-btn {
+    width: 100%;
+    max-width: 330px;
+    min-height: 56px;
+    padding: 12px 16px;
+    line-height: 1.5;
+  }
+
+  .main-menu-container {
+    padding: max(44px, env(safe-area-inset-top)) 24px max(90px, env(safe-area-inset-bottom));
+  }
+
+  .game-title {
+    margin-bottom: 56px;
+    font-size: clamp(21px, 6.2vw, 26px);
+  }
+
+  .menu-options {
+    width: min(100%, 290px);
+  }
+
+  .menu-item {
+    min-height: 48px;
+    line-height: 1.45;
+  }
+
+  .menu-instructions {
+    bottom: max(22px, env(safe-area-inset-bottom));
+    padding: 0 16px;
+    line-height: 1.7;
+  }
+
+  .retro-playlist-bar {
+    position: absolute;
+    top: max(6px, env(safe-area-inset-top));
+    left: 8px;
+    right: 8px;
+    width: auto;
+    height: 54px;
+    transform: none;
+    gap: 6px;
+    padding: 6px;
+  }
+
+  .playlist-track-info {
+    min-width: 0;
+    max-width: none;
+    height: 38px;
+    padding: 4px 6px;
+  }
+
+  .playlist-icon {
+    display: none;
+  }
+
+  .playlist-controls {
+    flex: 0 0 auto;
+    gap: 3px;
+  }
+
+  .playlist-btn {
+    min-width: 42px;
+    min-height: 38px;
+    justify-content: center;
+    padding: 4px 5px;
+    font-size: 7px;
+  }
+
+  #sceneGame {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    gap: 0;
+    padding: calc(max(6px, env(safe-area-inset-top)) + 64px) 12px max(28px, env(safe-area-inset-bottom));
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-top: 72px;
+  }
+
+  #sceneGame .fog-overlay {
+    position: fixed;
+  }
+
+  .game-grid {
+    display: contents;
+  }
+
+  .media-column {
+    order: 1;
+    display: block;
+    width: 100%;
+    min-height: auto;
+  }
+
+  .viewport-frame {
+    flex: none;
+    min-height: 0;
+  }
+
+  .viewport-header {
+    min-height: 34px;
+    height: auto;
+    gap: 10px;
+    padding: 7px 10px;
+    font-size: 7px;
+    line-height: 1.45;
+  }
+
+  .v-title {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .viewport-content {
+    flex: none;
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  .viewport-footer {
+    min-height: 42px;
+    height: auto;
+    padding: 7px 10px;
+    font-family: var(--font-dialog);
+    font-size: 15px;
+    line-height: 1.15;
+  }
+
+  .map-gesture-hint {
+    top: 7px;
+    left: 7px;
+    font-size: 6px;
+  }
+
+  .map-zoom-controls {
+    right: 7px;
+    bottom: 7px;
+  }
+
+  .map-zoom-btn {
+    min-width: 42px;
+    min-height: 42px;
+  }
+
+  .map-reset-btn {
+    min-width: 68px;
+  }
+
+  .dialog-box-container {
+    order: 2;
+    width: calc(100% - 8px);
+    height: auto;
+    min-height: 170px;
+    margin: 24px 4px 18px;
+    padding: 18px 14px 14px;
+    flex: none;
+  }
+
+  .dialog-body {
+    min-height: 132px;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .dialog-avatar-container {
+    width: 64px;
+    height: 64px;
+  }
+
+  .dialog-text {
+    padding-top: 0;
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  .dialog-speaker {
+    left: 12px;
+    max-width: calc(100% - 124px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .dialog-home-btn {
+    right: 12px;
+    min-height: 32px;
+  }
+
+  .dialog-box-container:has(.dialog-choices-panel.active) .dialog-body {
+    display: none;
+  }
+
+  .dialog-choices-panel.active {
+    position: relative;
+    inset: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    min-height: 0;
+    margin-top: 6px;
+    padding: 4px 0 0;
+    gap: 7px;
+    overflow: visible;
+  }
+
+  .choice-btn {
+    width: 100%;
+    min-height: 46px;
+    padding: 8px 10px;
+    font-size: 17px;
+    line-height: 1.2;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  .sidebar-column {
+    order: 3;
+    width: 100%;
+    gap: 12px;
+    padding-bottom: 8px;
+  }
+
+  #backButtonWidget {
+    order: -1;
+  }
+
+  .sidebar-widget {
+    flex: none;
+    width: 100%;
+  }
+
+  .widget-header {
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+  }
+
+  .widget-content {
+    font-family: var(--font-dialog);
+    font-size: 17px;
+    line-height: 1.35;
+  }
+
+  .status-row {
+    min-height: 44px;
+  }
+
+  .control-toggle-btn {
+    min-width: 52px;
+    min-height: 34px;
+  }
+
+  .portfolio-iframe {
+    min-height: 60vh;
+  }
+}
+
+@media (max-width: 380px) {
+  #sceneGame {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .retro-playlist-bar {
+    left: 5px;
+    right: 5px;
+  }
+
+  .playlist-ticker {
+    font-size: 14px;
+  }
+
+  .playlist-btn {
+    min-width: 38px;
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+
+  .dialog-avatar-container {
+    display: none;
+  }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+  #sceneGame {
+    padding-top: 68px;
+  }
+
+  .viewport-content {
+    aspect-ratio: 16 / 8;
+  }
+
+  .main-menu-container {
+    justify-content: flex-start;
+    overflow-y: auto;
+  }
 }

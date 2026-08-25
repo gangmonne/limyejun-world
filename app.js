@@ -690,6 +690,7 @@ function activateScene(sceneName) {
     
     // Render and build map coordinates
     buildSVGMap();
+    resetWorldMapTransform(false);
     highlightMapNode(0);
     showPlaylistBar(); // Show playlist on game scene!
     
@@ -910,6 +911,198 @@ function triggerGlitchEffect(callback) {
 // INTERACTIVE MAP ENGINE
 // ==========================================================================
 
+const mapGestureState = {
+  scale: 1,
+  x: 0,
+  y: 0,
+  pointers: new Map(),
+  startScale: 1,
+  startX: 0,
+  startY: 0,
+  startDistance: 0,
+  startMidpoint: { x: 0, y: 0 },
+  panStart: { x: 0, y: 0 },
+  dragged: false,
+  suppressClickUntil: 0
+};
+
+function clampMapTransform() {
+  const mapSvg = document.getElementById("worldMapSvg");
+  if (!mapSvg) return;
+
+  const viewportRect = mapSvg.parentElement.getBoundingClientRect();
+  const maxX = Math.max(0, (viewportRect.width * (mapGestureState.scale - 1)) / 2);
+  const maxY = Math.max(0, (viewportRect.height * (mapGestureState.scale - 1)) / 2);
+
+  mapGestureState.x = Math.min(maxX, Math.max(-maxX, mapGestureState.x));
+  mapGestureState.y = Math.min(maxY, Math.max(-maxY, mapGestureState.y));
+}
+
+function applyWorldMapTransform(animate = false) {
+  const mapSvg = document.getElementById("worldMapSvg");
+  const resetButton = document.getElementById("mapZoomReset");
+  if (!mapSvg) return;
+
+  clampMapTransform();
+  mapSvg.classList.toggle("map-transform-animated", animate);
+  mapSvg.classList.toggle("is-zoomed", mapGestureState.scale > 1.01);
+  mapSvg.style.transform = `translate3d(${mapGestureState.x}px, ${mapGestureState.y}px, 0) scale(${mapGestureState.scale})`;
+  mapSvg.setAttribute("data-zoom", `${Math.round(mapGestureState.scale * 100)}%`);
+  if (resetButton) resetButton.textContent = `${Math.round(mapGestureState.scale * 100)}%`;
+
+  if (animate) {
+    window.setTimeout(() => mapSvg.classList.remove("map-transform-animated"), 220);
+  }
+}
+
+function resetWorldMapTransform(animate = true) {
+  mapGestureState.scale = 1;
+  mapGestureState.x = 0;
+  mapGestureState.y = 0;
+  mapGestureState.pointers.clear();
+  applyWorldMapTransform(animate);
+}
+
+function zoomWorldMapBy(step, clientPoint = null) {
+  const mapSvg = document.getElementById("worldMapSvg");
+  if (!mapSvg || mapSvg.classList.contains("hidden")) return;
+
+  const rect = mapSvg.parentElement.getBoundingClientRect();
+  const oldScale = mapGestureState.scale;
+  const nextScale = Math.min(3.5, Math.max(1, oldScale + step));
+  if (nextScale === oldScale) return;
+
+  const point = clientPoint || {
+    x: rect.left + rect.width / 2,
+    y: rect.top + rect.height / 2
+  };
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+  const localX = (point.x - centerX - mapGestureState.x) / oldScale;
+  const localY = (point.y - centerY - mapGestureState.y) / oldScale;
+
+  mapGestureState.scale = nextScale;
+  mapGestureState.x = point.x - centerX - localX * nextScale;
+  mapGestureState.y = point.y - centerY - localY * nextScale;
+  applyWorldMapTransform(true);
+}
+
+function initWorldMapGestures() {
+  const mapSvg = document.getElementById("worldMapSvg");
+  const zoomIn = document.getElementById("mapZoomIn");
+  const zoomOut = document.getElementById("mapZoomOut");
+  const zoomReset = document.getElementById("mapZoomReset");
+  const gestureUi = document.getElementById("mapGestureUi");
+  if (!mapSvg || !zoomIn || !zoomOut || !zoomReset || !gestureUi) return;
+
+  const midpoint = () => {
+    const points = Array.from(mapGestureState.pointers.values());
+    return {
+      x: (points[0].x + points[1].x) / 2,
+      y: (points[0].y + points[1].y) / 2
+    };
+  };
+
+  const distance = () => {
+    const points = Array.from(mapGestureState.pointers.values());
+    return Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
+  };
+
+  mapSvg.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+    mapSvg.setPointerCapture?.(event.pointerId);
+    mapGestureState.pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    mapGestureState.dragged = false;
+
+    if (mapGestureState.pointers.size === 1) {
+      mapGestureState.panStart = { x: event.clientX, y: event.clientY };
+      mapGestureState.startX = mapGestureState.x;
+      mapGestureState.startY = mapGestureState.y;
+    } else if (mapGestureState.pointers.size === 2) {
+      mapGestureState.startDistance = distance();
+      mapGestureState.startMidpoint = midpoint();
+      mapGestureState.startScale = mapGestureState.scale;
+      mapGestureState.startX = mapGestureState.x;
+      mapGestureState.startY = mapGestureState.y;
+    }
+  });
+
+  mapSvg.addEventListener("pointermove", (event) => {
+    if (!mapGestureState.pointers.has(event.pointerId)) return;
+    event.preventDefault();
+    mapGestureState.pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+
+    if (mapGestureState.pointers.size >= 2) {
+      const currentDistance = distance();
+      const currentMidpoint = midpoint();
+      const rect = mapSvg.parentElement.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const nextScale = Math.min(3.5, Math.max(1, mapGestureState.startScale * (currentDistance / mapGestureState.startDistance)));
+      const localX = (mapGestureState.startMidpoint.x - centerX - mapGestureState.startX) / mapGestureState.startScale;
+      const localY = (mapGestureState.startMidpoint.y - centerY - mapGestureState.startY) / mapGestureState.startScale;
+
+      mapGestureState.scale = nextScale;
+      mapGestureState.x = currentMidpoint.x - centerX - localX * nextScale;
+      mapGestureState.y = currentMidpoint.y - centerY - localY * nextScale;
+      mapGestureState.dragged = true;
+
+      applyWorldMapTransform(false);
+    } else if (mapGestureState.scale > 1.01) {
+      const dx = event.clientX - mapGestureState.panStart.x;
+      const dy = event.clientY - mapGestureState.panStart.y;
+      if (Math.hypot(dx, dy) > 4) mapGestureState.dragged = true;
+      mapGestureState.x = mapGestureState.startX + dx;
+      mapGestureState.y = mapGestureState.startY + dy;
+      applyWorldMapTransform(false);
+    }
+  }, { passive: false });
+
+  const endPointer = (event) => {
+    if (mapGestureState.dragged) {
+      mapGestureState.suppressClickUntil = Date.now() + 350;
+    }
+    mapGestureState.pointers.delete(event.pointerId);
+
+    if (mapGestureState.pointers.size === 1) {
+      const remaining = Array.from(mapGestureState.pointers.values())[0];
+      mapGestureState.panStart = { x: remaining.x, y: remaining.y };
+      mapGestureState.startX = mapGestureState.x;
+      mapGestureState.startY = mapGestureState.y;
+    }
+  };
+
+  mapSvg.addEventListener("pointerup", endPointer);
+  mapSvg.addEventListener("pointercancel", endPointer);
+  mapSvg.addEventListener("dblclick", (event) => {
+    event.preventDefault();
+    zoomWorldMapBy(mapGestureState.scale > 1.5 ? 1 - mapGestureState.scale : 1.25, { x: event.clientX, y: event.clientY });
+  });
+  mapSvg.addEventListener("wheel", (event) => {
+    event.preventDefault();
+    zoomWorldMapBy(event.deltaY < 0 ? 0.25 : -0.25, { x: event.clientX, y: event.clientY });
+  }, { passive: false });
+
+  zoomIn.addEventListener("click", (event) => {
+    event.stopPropagation();
+    zoomWorldMapBy(0.5);
+  });
+  zoomOut.addEventListener("click", (event) => {
+    event.stopPropagation();
+    zoomWorldMapBy(-0.5);
+  });
+  zoomReset.addEventListener("click", (event) => {
+    event.stopPropagation();
+    resetWorldMapTransform();
+  });
+
+  const syncGestureUi = () => gestureUi.classList.toggle("hidden", mapSvg.classList.contains("hidden"));
+  new MutationObserver(syncGestureUi).observe(mapSvg, { attributes: true, attributeFilter: ["class"] });
+  window.addEventListener("resize", () => applyWorldMapTransform(false));
+  syncGestureUi();
+  resetWorldMapTransform(false);
+}
+
 /**
  * Draws the SVG nodes and connection lines based on coordinates database.
  */
@@ -932,6 +1125,16 @@ function buildSVGMap() {
   MAP_WORLDS.forEach((world, index) => {
     const drawNode = (cx, cy, labelSuffix, isPrimary = true) => {
       const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      group.setAttribute("role", "button");
+      group.setAttribute("tabindex", "0");
+      group.setAttribute("aria-label", `Explore ${world.name}`);
+
+      const hitArea = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      hitArea.setAttribute("cx", cx);
+      hitArea.setAttribute("cy", cy - 8);
+      hitArea.setAttribute("r", "18");
+      hitArea.setAttribute("fill", "transparent");
+      hitArea.setAttribute("class", "map-node-hit-area");
       
       const pin = document.createElementNS("http://www.w3.org/2000/svg", "path");
       const nodeId = isPrimary ? `node-${world.id}` : `node-${world.id}-sec`;
@@ -960,13 +1163,14 @@ function buildSVGMap() {
       text.setAttribute("class", "map-node-label");
       text.textContent = labelSuffix;
       
+      group.appendChild(hitArea);
       group.appendChild(pin);
       group.appendChild(innerDot);
       group.appendChild(text);
       nodesGroup.appendChild(group);
       
       // Mouse Interaction
-      pin.addEventListener("mouseenter", () => {
+      group.addEventListener("mouseenter", () => {
         if (sceneActiveIndex === 3 && !isViewingWorldDetail && currentDossierState === "map") {
           currentChoiceIndex = index;
           highlightMapNode(index);
@@ -974,11 +1178,20 @@ function buildSVGMap() {
         }
       });
       
-      pin.addEventListener("click", () => {
+      const enterNode = () => {
+        if (Date.now() < mapGestureState.suppressClickUntil) return;
         if (sceneActiveIndex === 3 && !isViewingWorldDetail && currentDossierState === "map") {
           currentChoiceIndex = index;
           highlightMapNode(index);
           enterWorldDetail(world);
+        }
+      };
+
+      group.addEventListener("click", enterNode);
+      group.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          enterNode();
         }
       });
     };
@@ -2487,6 +2700,7 @@ document.getElementById("btnBackToMap").addEventListener("click", () => {
 window.addEventListener("DOMContentLoaded", () => {
   activateScene("audio");
   sceneActiveIndex = 0;
+  initWorldMapGestures();
   initYouTubePlayer();
   window.focus();
 });
